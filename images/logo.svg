@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 76" width="268" height="76" role="img" aria-label="Again Paws logo">
+  <rect x="0" y="0" width="268" height="76" rx="16" fill="#F6EEE1"/>
+  <!-- cat head (left, peeking) -->
+  <g fill="#6B4226">
+    <path d="M14 12 L18 2 L24 10 Z"/>
+    <path d="M34 10 L38 1 L42 10 Z"/>
+    <path d="M14 10 C14 3 20 0 26 0 C32 0 37 4 37 10 C37 17 32 22 25 22 C18 22 14 16 14 10 Z"/>
+  </g>
+  <circle cx="22" cy="10" r="1.4" fill="#2E1B0E"/>
+  <circle cx="30" cy="10" r="1.4" fill="#2E1B0E"/>
+  <!-- dog head (right, peeking) -->
+  <g>
+    <path d="M60 8 C66 6 72 9 72 16 C72 22 68 25 63 25 Z" fill="#B9763F"/>
+    <path d="M52 6 C58 6 63 10 63 16 C63 22 59 26 53 26 C47 26 43 22 43 16 C43 10 47 6 52 6 Z" fill="#D99A5B"/>
+  </g>
+  <circle cx="50" cy="15" r="1.4" fill="#3A2410"/>
+  <circle cx="58" cy="15" r="1.4" fill="#3A2410"/>
+  <ellipse cx="61.5" cy="19" rx="2" ry="1.4" fill="#3A2410"/>
+  <!-- felt heart -->
+  <path d="M38 70 C22 58 10 47 10 34 C10 23 18 16 27 16 C32 16 36 19 38 23 C40 19 44 16 49 16 C58 16 66 23 66 34 C66 47 54 58 38 70 Z"
+        fill="#FDF9F0" stroke="#E3D5BC" stroke-width="1.5"/>
+  <!-- toe beans -->
+  <ellipse cx="25" cy="29" rx="6" ry="7.5" fill="#EBA36B" transform="rotate(-14 25 29)"/>
+  <ellipse cx="38" cy="26" rx="6" ry="7.5" fill="#E8A9A0"/>
+  <ellipse cx="51" cy="29" rx="6" ry="7.5" fill="#EBA36B" transform="rotate(14 51 29)"/>
+  <!-- main pad -->
+  <path d="M38 44 C33 38 26 38 26 44 C26 50 31 55 38 55 C45 55 50 50 50 44 C50 38 43 38 38 44 Z" fill="#E39C97"/>
+  <!-- brand text -->
+  <text x="84" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="31" fill="#6F4423">Again <tspan font-style="italic" fill="#8A5A33">Paws</tspan></text>
+  <text x="86" y="63" font-family="Georgia, serif" font-size="10.5" letter-spacing="2.4" fill="#A97F55">HANDMADE PET KEEPSAKES</text>
+</svg>
