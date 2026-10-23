@@ -172,7 +172,7 @@ REFUND_BODY = """
 <p>You can cancel or change your order for a <b>full refund</b> at any time before we begin felting. We always confirm the design and quote with you first, so you have a clear "start" moment.</p>
 
 <h2>Stage 2 — During production</h2>
-<p>Once production starts, materials and hours are committed to your piece. If you need to cancel at this stage, we refund <b>50% of the order price</b>. For larger pieces you'll see progress photos along the way, and any concern you raise will be fixed before completion.</p>
+<p>Once production starts, materials and studio hours are committed to your piece. If you cancel at this stage, <b>your deposit is non-refundable</b> — we cannot resell a piece made to your pet's photos. For larger pieces you'll see progress photos along the way, and any concern you raise will be fixed before completion.</p>
 
 <h2>Stage 3 — Finished piece</h2>
 <p>Because each keepsake is a one-of-a-kind custom artwork made to your pet's photos, finished pieces are <b>not returnable for change of mind</b>. If the likeness doesn't capture your pet, tell us — we will keep adjusting the details (fur color, markings, expression) until it does. We'd rather spend another week than have you disappointed.</p>
@@ -210,7 +210,7 @@ FAQS = [
   ("Can I request changes while my keepsake is being made?",
    "Yes. For larger pieces we send progress photos before final detailing, and you can request adjustments then. We would always confirm with you before making any change that affects price or timeline."),
   ("What if I'm not happy with the result?",
-   "Tell us — we will keep adjusting the details until the piece truly captures your pet. Our refund policy is stage-based: full refund before production starts, a partial refund during production, and free fixes for anything that arrives damaged. See the <a href='/refund-policy/'>refund policy</a>."),
+   "Tell us — we will keep adjusting the details until the piece truly captures your pet. Our refund policy is stage-based: full refund before production starts; once production begins the deposit is non-refundable; and anything that arrives damaged gets fixed for free. See the <a href='/refund-policy/'>refund policy</a>."),
   ("How do I order?",
    "Send us your photos through the <a href='/contact/'>contact page</a> and tell us which style you are interested in. We will reply with a quote, a production timeline, and photo advice if needed. Once you approve, production begins."),
 ]
