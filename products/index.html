@@ -24,7 +24,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500;600;700&display=swap"/>
 <link rel="stylesheet" href="/assets/site-v2.css"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Again Paws Keepsake Collection", "itemListElement": [{"@type": "Product", "position": 1, "name": "Custom Needle-Felted Pet Mini", "description": "A small handmade wool felt pet portrait, perfect as a personal keepsake or gift.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/products/", "image": "https://againpaws.vip/images/product-1.webp"}, {"@type": "Product", "position": 2, "name": "Custom Felted Pet Headshot in Frame", "description": "A framed handmade felted headshot designed to preserve your pet's unique appearance.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/products/", "image": "https://againpaws.vip/images/product-2.webp"}, {"@type": "Product", "position": 3, "name": "Custom Needle-Felted Half-Body Portrait", "description": "A detailed half-body needle-felted portrait in frame with customized features.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/products/", "image": "https://againpaws.vip/images/product-3.webp"}, {"@type": "Product", "position": 4, "name": "Custom Needle-Felted Pet Replica", "description": "A premium full-body handmade replica capturing your pet's appearance and personality.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/products/", "image": "https://againpaws.vip/images/product-4.webp"}, {"@type": "Product", "position": 5, "name": "Hand-Carved & Hand-Painted Leather Portrait", "description": "A miniature pet portrait carved and painted by hand on genuine leather — durable, detailed and one of a kind.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/products/", "image": "https://againpaws.vip/images/product-5.webp"}, {"@type": "Product", "position": 6, "name": "Custom Pet Memorial Wind Chime", "description": "A wooden wind chime with an engraved tag carrying your pet's photo, name and dates.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/custom-pet-wind-chime/", "image": "https://againpaws.vip/images/products/custom-pet-wind-chime/natural-silver-photo.webp"}, {"@type": "Product", "position": 7, "name": "Custom Pet Portrait Window Suncatcher", "description": "A stained-glass style pet portrait made from your photo — it glows in the window light.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/custom-pet-window-suncatcher/", "image": "https://againpaws.vip/images/products/custom-pet-window-suncatcher/pet-portrait.webp"}, {"@type": "Product", "position": 8, "name": "Pet Memorial Garden Stone", "description": "A weather-resistant memorial stone with a photo window and a flower planter top.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-memorial-garden-stone/", "image": "https://againpaws.vip/images/products/pet-memorial-garden-stone/forever.webp"}, {"@type": "Product", "position": 9, "name": "Classic Square Pet Cremation Urn", "description": "A heavyweight urn box with a photo window and paw details, in four colours.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-cremation-urn/", "image": "https://againpaws.vip/images/products/pet-cremation-urn/pink.webp"}, {"@type": "Product", "position": 10, "name": "Pet Memorial Offering Set · 55 Pieces", "description": "A complete 55-piece farewell offering set — favourite treats, grooming items and traditional paper offerings.", "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-memorial-offering-set/", "image": "https://againpaws.vip/images/products/pet-memorial-offering-set/set-layout.webp"}]}</script>
-<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -36,10 +35,7 @@
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/" aria-current="page">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
-    <div class="header-actions">
-      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -172,14 +168,6 @@
   </div>
 </section>
 </main>
-<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
-  <div class="drawer-backdrop" data-cart-close></div>
-  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
-    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
-    <div class="drawer-body" id="cartDrawerList"></div>
-    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
-  </aside>
-</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -195,7 +183,6 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
-          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -205,6 +192,7 @@
           <li><a href="/process/">Our Process</a></li>
           <li><a href="/guides/">Guides</a></li>
           <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -230,6 +218,5 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
-<script src="/assets/store.js" defer></script>
 </body>
 </html>
