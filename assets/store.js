@@ -102,7 +102,7 @@
   function lineHTML(i, compact) {
     return '' +
       '<div class="cart-line' + (compact ? ' is-compact' : '') + '">' +
-        '<div class="cart-thumb">' + (i.img ? '<img src="' + esc(i.img) + '" alt="' + esc(i.name) + '" loading="lazy"/>' : '') + '</div>' +
+        '<div class="cart-thumb">' + (i.img ? '<img src="' + esc(i.img) + '" alt="' + esc(i.name) + '"/>' : '') + '</div>' +
         '<div class="cart-line-main">' +
           '<p class="cart-line-name">' + esc(i.name) + '</p>' +
           (i.variant ? '<p class="cart-line-variant">' + esc(i.variant) + '</p>' : '') +
