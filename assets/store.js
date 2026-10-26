@@ -217,7 +217,7 @@
     if (window.paypal && window.paypal.Buttons) { cb(true); return; }
     var s = document.createElement("script");
     s.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(CFG.paypalClientId) +
-            "&currency=" + encodeURIComponent(CUR) + "&intent=capture&components=buttons";
+            "&currency=" + encodeURIComponent(CUR) + "&intent=capture&components=buttons&locale=en_US";
     s.async = true;
     s.onload = function () { cb(!!(window.paypal && window.paypal.Buttons)); };
     s.onerror = function () { cb(false); };

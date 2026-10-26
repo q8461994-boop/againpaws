@@ -6,12 +6,12 @@ window.AP_STORE = {
   currency: "USD",
   symbol: "$",
 
-  /* PayPal client ID.
-     Get it from https://developer.paypal.com/dashboard/applications
-     → Apps & Credentials → Live → Client ID → copy.
-     Paste it between the quotes below. Leave empty to hide PayPal
-     buttons and fall back to "order by email / WhatsApp". */
-  paypalClientId: "",
+  /* PayPal LIVE client ID — created in the merchant account.
+     Where it came from: developer.paypal.com → Apps & Credentials
+     → Live tab → the app created for this store → Client ID.
+     If it is ever cleared, the cart hides PayPal and falls back to
+     "order by email / WhatsApp" instead of breaking. */
+  paypalClientId: "BAAImuoPzVJh29pTqlKWWQBDtWK_C9muWbxt6NT8fAYsM6vEfgu50xBrzxu-mkFAlmYPMqyv-1AIjQlSu0",
 
   /* Shipping charged at checkout, in dollars per order. */
   shipping: {
