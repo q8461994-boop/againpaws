@@ -111,6 +111,7 @@
   ]
 }
     </script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -118,24 +119,32 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<main><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose">
-
-<h1>Frequently Asked Questions</h1>
-<p class="updated">Everything people usually ask before ordering a custom needle-felted pet keepsake.</p>
+<main><section class="section-tight"><div class="wrap"><div class="prose"><h1>Frequently Asked Questions</h1>
+<p class="updated">Everything people usually ask before ordering — felted portraits and memorial pieces alike.</p>
 <div class="faq-item"><h2>What is a custom needle-felted pet replica?</h2><p>It is a one-of-a-kind sculpture of your pet, handmade by repeatedly shaping wool fiber with a special barbed needle. We work from your photos to match your pet's fur color, markings, pose and expression. Each piece takes many hours of handwork and is made to order — no two are ever alike.</p></div><div class="faq-item"><h2>How much does a custom felted pet cost?</h2><p>Again Paws keepsakes range from $87 for a Mini Portrait to $477 for a Full-Body piece. The final quote depends on size, pose complexity and fur detail. See the <a href='/pricing/'>pricing page</a> for what is included at each level.</p></div><div class="faq-item"><h2>How long does it take to make?</h2><p>Production typically takes 2–4 weeks depending on the size and complexity of your piece, plus shipping time to your country. We confirm the exact timeline with your quote before starting, and you can request updates at any time.</p></div><div class="faq-item"><h2>What photos work best?</h2><p>Clear, well-lit photos taken at your pet's eye level work best: one showing the whole body or head, plus close-ups of the face, and photos of any distinctive markings. Multiple angles help a lot. See our <a href='/guides/best-photos-for-felted-pet/'>photo guide</a> for examples.</p></div><div class="faq-item"><h2>Can you make a keepsake of a pet that has passed away?</h2><p>Yes — memorial keepsakes are one of the main reasons people order from us. Send us the best photos you have, even older ones. We will tell you honestly what we can capture before production starts, and we handle every memorial order with extra care.</p></div><div class="faq-item"><h2>What are the keepsakes made of?</h2><p>High-quality wool fiber, shaped entirely by hand using needle-felting techniques — no molds, no machines. Glass eyes are used for realism, and pieces can include a frame or base depending on the style you choose.</p></div><div class="faq-item"><h2>Do you ship worldwide?</h2><p>Yes, we ship worldwide from our studio with tracking. Shipping cost and estimated delivery time are confirmed with your quote. Every keepsake is packed in protective packaging designed for international transit.</p></div><div class="faq-item"><h2>Can I request changes while my keepsake is being made?</h2><p>Yes. For larger pieces we send progress photos before final detailing, and you can request adjustments then. We would always confirm with you before making any change that affects price or timeline.</p></div><div class="faq-item"><h2>What if I'm not happy with the result?</h2><p>Tell us — we will keep adjusting the details until the piece truly captures your pet. Our refund policy is stage-based: full refund before production starts; once production begins the deposit is non-refundable; and anything that arrives damaged gets fixed for free. See the <a href='/refund-policy/'>refund policy</a>.</p></div><div class="faq-item"><h2>How do I order?</h2><p>Send us your photos through the <a href='/contact/'>contact page</a> and tell us which style you are interested in. We will reply with a quote, a production timeline, and photo advice if needed. Once you approve, production begins.</p></div>
+<div class="faq-item"><h2>How do I pay?</h2><p>Checkout is handled by PayPal: you can pay with a PayPal balance, a linked card, or as a guest with any debit or credit card — no PayPal account needed. Felted portraits are quoted by hand first, then paid through a PayPal invoice. If PayPal is difficult where you are, message us and we will find another way.</p></div><div class="faq-item"><h2>Which pieces can I buy straight away?</h2><p>The Memorial Collection is fixed-price: <a href="/custom-pet-wind-chime/">wind chimes</a> ($39), <a href="/custom-pet-window-suncatcher/">window suncatchers</a> ($31–$37), <a href="/pet-memorial-garden-stone/">garden stones</a> ($23.50), <a href="/pet-cremation-urn/">cremation urns</a> ($28.50) and the <a href="/pet-memorial-offering-set/">55-piece offering set</a> ($24.80) all go in the bag directly. Felted portraits are made from your photos, so those start with a quote.</p></div>
 <div class="foot-cta">
   <p>Something else on your mind? Ask us any time.</p>
   <a class="btn" href="/contact/">Contact Us</a>
+</div></div></div></section></main>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
 </div>
-
-</div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -151,6 +160,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -185,5 +195,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>

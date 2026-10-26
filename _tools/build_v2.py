@@ -286,6 +286,104 @@ padding:8px 18px;font:400 14px var(--font-sans);color:var(--color-stone);text-de
 .pill-tab:hover{border-color:var(--color-stone)}
 .notice{background:var(--color-canvas);border:1px solid var(--color-hairline);border-radius:var(--radius-md);
 padding:var(--space-4);font-size:15px;color:var(--color-stone)}
+
+/* ---------- cart, drawer & checkout ---------- */
+.is-locked{overflow:hidden}
+.header-actions{display:flex;align-items:center;gap:10px;margin-left:var(--space-5)}
+.cart-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--color-stone);
+font:500 14px/1 var(--font-sans);border:1px solid var(--color-hairline);border-radius:var(--radius-full);
+padding:9px 15px;background:var(--color-surface)}
+.cart-link:hover{border-color:var(--color-stone);color:var(--color-ink)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;
+border-radius:var(--radius-full);background:var(--color-clay);color:#fff;font:600 11px/1 var(--font-sans)}
+.cart-count[hidden]{display:none}
+.drawer{position:fixed;inset:0;z-index:120;display:flex;justify-content:flex-end}
+.drawer[hidden]{display:none}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(28,27,26,.42);opacity:0;transition:opacity .22s ease}
+.drawer.is-open .drawer-backdrop{opacity:1}
+.drawer-panel{position:relative;width:min(430px,100%);height:100%;background:var(--color-canvas);
+display:flex;flex-direction:column;transform:translateX(101%);transition:transform .24s ease;box-shadow:var(--shadow-2)}
+.drawer.is-open .drawer-panel{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-5);
+border-bottom:1px solid var(--color-hairline)}
+.drawer-head h2{font:300 24px/1.1 var(--font-serif);margin:0}
+.drawer-close{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;color:var(--color-stone);padding:2px 8px}
+.drawer-body{flex:1;overflow-y:auto;padding:var(--space-2) var(--space-5)}
+.drawer-foot{border-top:1px solid var(--color-hairline);padding:var(--space-5);background:var(--color-surface)}
+.cart-line{display:grid;grid-template-columns:84px 1fr auto;gap:var(--space-4);align-items:start;
+padding:var(--space-4) 0;border-bottom:1px solid var(--color-hairline)}
+.cart-line:first-child{padding-top:var(--space-3)}
+.cart-line:last-child{border-bottom:0}
+.cart-line.is-compact{grid-template-columns:62px 1fr auto;gap:12px;padding:12px 0}
+.cart-thumb{background:var(--color-surface-grey);border-radius:var(--radius-md);overflow:hidden;aspect-ratio:1}
+.cart-thumb img{width:100%;height:100%;object-fit:cover}
+.cart-line-name{font:500 16px/1.35 var(--font-sans);margin:0 0 2px}
+.cart-line-variant{font-size:13px;color:var(--color-ash);margin:0 0 8px}
+.cart-line-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cart-line-price{font:600 15px/1.3 var(--font-sans);color:var(--color-clay);white-space:nowrap}
+.link-quiet{background:none;border:0;padding:0;font:400 13px/1.4 var(--font-sans);color:var(--color-ash);
+text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.link-quiet:hover{color:var(--color-ink)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--color-hairline);border-radius:var(--radius-full);
+background:var(--color-surface);overflow:hidden}
+.qty button{width:36px;height:38px;background:none;border:0;font-size:16px;cursor:pointer;color:var(--color-stone)}
+.qty button:hover{background:var(--color-surface-grey)}
+.qty span{min-width:24px;text-align:center;font:500 14px/1 var(--font-sans)}
+.qty-sm button{width:28px;height:28px;font-size:14px}
+.qty-sm span{min-width:18px;font-size:13px}
+.qty input{width:52px;height:40px;border:0;text-align:center;font:500 15px/1 var(--font-sans);background:none}
+.cart-layout{display:grid;grid-template-columns:1.55fr .9fr;gap:var(--space-7);align-items:start;margin-top:var(--space-6)}
+@media(max-width:900px){.cart-layout{grid-template-columns:1fr;gap:var(--space-6)}}
+.cart-side{position:sticky;top:96px}
+@media(max-width:900px){.cart-side{position:static}}
+.cart-summary h3{font:300 26px/1.2 var(--font-serif);margin:0 0 var(--space-4)}
+.sum-list{margin:0 0 var(--space-4)}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+font-size:15px;color:var(--color-stone);margin:0 0 10px}
+.sum-row dt,.sum-row dd{margin:0}
+.sum-row.is-total{border-top:1px solid var(--color-hairline);padding-top:var(--space-3);margin-top:var(--space-3);
+font:600 17px/1.3 var(--font-sans);color:var(--color-ink)}
+.sum-row.is-total dd{font:300 26px/1.2 var(--font-serif)}
+.cart-mini{font-size:13px;color:var(--color-ash);margin:0 0 var(--space-4);line-height:1.5}
+.paypal-area{margin:0 0 var(--space-4);min-height:52px}
+.paypal-area .btn{margin-bottom:10px}
+.pay-loading{font-size:14px;color:var(--color-ash)}
+.pay-error{color:var(--color-error);font-size:14px;margin:10px 0 0}
+.pay-fallback{font-size:14px;color:var(--color-stone);margin:0 0 12px}
+.pay-fallback-note{font-size:13px;color:var(--color-ash);margin:0 0 8px}
+.pay-notes{border-top:1px solid var(--color-hairline);padding-top:var(--space-4);margin-top:var(--space-4)}
+.pay-notes p{font-size:13px;color:var(--color-ash);margin:0 0 8px;line-height:1.5}
+.pay-notes p:last-child{margin-bottom:0}
+.cart-wide{width:100%;margin-bottom:10px;text-align:center;justify-content:center}
+.cart-help{background:var(--color-surface);border:1px solid var(--color-hairline);border-radius:var(--radius-lg);
+padding:var(--space-5);margin-top:var(--space-4)}
+.cart-help h3{font:400 17px/1.3 var(--font-sans);margin:0 0 6px}
+.cart-help p{font-size:14px;color:var(--color-stone);margin:0}
+.cart-empty{background:var(--color-surface);border:1px solid var(--color-hairline);border-radius:var(--radius-lg);
+padding:var(--space-6);text-align:center}
+.cart-empty .lead{margin-bottom:var(--space-4)}
+.cart-empty .btn-row{justify-content:center}
+.buy-block{margin-top:var(--space-4)}
+.qty-row{display:flex;align-items:center;gap:14px;margin-bottom:var(--space-3)}
+.qty-row label{font:600 14px/1 var(--font-sans);color:var(--color-stone)}
+.pay-line{font-size:13px;color:var(--color-ash);margin:var(--space-3) 0 0;line-height:1.5}
+.note-block{background:var(--color-surface);border:1px solid var(--color-hairline);border-radius:var(--radius-lg);
+padding:var(--space-6)}
+.note-block p{color:var(--color-stone);margin:0 0 var(--space-4)}
+.note-block p:last-child{margin-bottom:0}
+.cart-mini+.pay-fallback{margin-top:6px}
+.buybar{display:none}
+@media(max-width:900px){
+ .buybar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;align-items:center;
+  justify-content:space-between;gap:12px;padding:10px 16px;background:var(--color-canvas);
+  border-top:1px solid var(--color-hairline);box-shadow:0 -6px 20px rgba(28,27,26,.07)}
+ body:has(.buybar){padding-bottom:78px}
+ .buybar .btn{padding:13px 24px;font-size:15px}
+ .buybar-price{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+ .buybar-price b{font:600 18px/1.2 var(--font-sans);color:var(--color-ink)}
+ .buybar-price span{font-size:12px;color:var(--color-ash);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;max-width:170px}
+}
 """
 
 # ----------------------------------------------------------------------------
@@ -532,8 +630,15 @@ NEW = [
             ("Lead time","3–7 days before shipping"),
             ("Shipping","Worldwide, tracked")],
       faq=[("What exactly is in the box?","Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total."),
-           ("Is this a religious set?","The paper offerings follow a traditional East Asian farewell custom. Many families use the whole set; others use only the treats and keepsakes."),
-           ("Can it be shipped as a gift?","Yes. Tell us in the order notes and we will leave the price out of the parcel.")],
+           ("Is this a religious set?","It comes from a traditional East Asian farewell custom rather than from a single religion — the paper is a way of sending a pet off with the things it loved. Nothing in the box has to be used, and many families keep only the treats and keepsakes. There is a fuller explanation further up this page."),
+           ("Can it be shipped as a gift?","Yes. Tell us when you order and we will leave the price out of the parcel and add a gift card.")],
+      note=dict(
+        eyebrow="A Note On The Paper Offerings",
+        title="What the 55 pieces are for.",
+        paras=[
+          "The folded paper in this set comes from an East Asian farewell custom. Families gather the things a pet loved in life — a favourite treat, a bowl of milk, a comb — and add paper gifts: folded ingots, paper clothing and a written letter. At the graveside or at a small memorial service the paper is burned, so that the pet takes it along. It is a way of saying: this was yours, keep it.",
+          "Nothing here is required, and nothing is permanent. Plenty of families use the treats, the grooming items and the keepsake card, and leave the paper folded in the box as a memento. Others use the set exactly as intended. If you would rather not receive the paper items at all, say so when you order and we will take them out before shipping.",
+          "Buying it for someone else? The box arrives fully arranged, with a small card that explains each item in plain English — so nothing has to be explained out loud at a difficult moment."]),
       images=[(f"{IMG}/pet-memorial-offering-set/set-layout.webp","55-piece pet memorial offering set laid out with treats, paper offerings and incense burner"),
               (f"{IMG}/pet-memorial-offering-set/rainbow-bridge.webp","A dog and a cat asleep together in the sun")],
       skus=[sku("default","55-Piece Set · 3D Style",24.8,f"{IMG}/pet-memorial-offering-set/set-layout.webp")],
@@ -551,7 +656,7 @@ NAV = [
     ("/process/", "Process"), ("/guides/", "Guides"), ("/about/", "About"), ("/contact/", "Contact"),
 ]
 
-def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image="/images/hero.webp", og_type="website"):
+def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image="/images/hero.webp", og_type="website", robots="index, follow"):
     nav_html = "".join(
         f'<a class="nav-link" href="{href}"{" aria-current=\"page\"" if href == active else ""}>{label}</a>'
         for href, label in NAV)
@@ -563,7 +668,7 @@ def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image=
 <title>{html.escape(title)}</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <meta name="description" content="{html.escape(desc)}"/>
-<meta name="robots" content="index, follow"/>
+<meta name="robots" content="{robots}"/>
 <link rel="canonical" href="{canonical}"/>
 <meta property="og:type" content="{og_type}"/>
 <meta property="og:site_name" content="Again Paws"/>
@@ -581,6 +686,7 @@ def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image=
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500;600;700&display=swap"/>
 <link rel="stylesheet" href="/assets/site-v2.css"/>
 {extra_head}
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -588,14 +694,25 @@ def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image=
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       {nav_html}
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 {body}
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -611,6 +728,7 @@ def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image=
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -645,6 +763,7 @@ def shell(*, title, desc, canonical, active=None, body, extra_head="", og_image=
   if(h){{window.addEventListener('scroll',function(){{h.classList.toggle('scrolled',window.scrollY>8);}},{{passive:true}});}}
 }})();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>
 """
@@ -924,7 +1043,8 @@ def build_product_page(p):
     if len(p["skus"]) > 1:
         chips = "".join(
             f'<button class="sku-chip{" is-active" if i == 0 else ""}" type="button" aria-pressed="{"true" if i == 0 else "false"}" '
-            f'data-img="{k["img"]}" data-price="{money(k["price"])}" data-name="{html.escape(k["name"])}">'
+            f'data-img="{k["img"]}" data-price="{money(k["price"])}" data-name="{html.escape(k["name"])}" '
+            f'data-sku="{k["id"]}" data-pricec="{int(round(k["price"] * 100))}">'
             f'<img src="{k["img"]}" alt="" loading="lazy"/>'
             f'<span><b>{html.escape(k["name"])}</b>'
             f'{f"<em>{html.escape(k["note"])}</em>" if k["note"] else ""}'
@@ -962,6 +1082,23 @@ def build_product_page(p):
          '<div class="btn-row"><a class="btn btn-stone" href="/process/">Shipping & Delivery</a>'
          '<a class="btn btn-outline-stone" href="/faq/">Read The FAQ</a></div>'))
 
+    first_sku = p["skus"][0]
+    add_attrs = (f'data-id="{p["slug"]}::{first_sku["id"]}" data-slug="{p["slug"]}" '
+                 f'data-name="{html.escape(p["name"])}" data-variant="{html.escape(first_sku["name"])}" '
+                 f'data-price="{int(round(first_sku["price"] * 100))}" data-img="{first_sku["img"]}"')
+
+    note_html = ""
+    if p.get("note"):
+        n = p["note"]
+        paras = "".join(f"<p>{x}</p>" for x in n["paras"])
+        note_html = f"""<section class="section band-grey">
+  <div class="wrap measure-c">
+    <p class="eyebrow">{n['eyebrow']}</p>
+    <h2 class="h2">{n['title']}</h2>
+    <div class="note-block mt-5">{paras}</div>
+  </div>
+</section>"""
+
     body = f"""
 <main>
 <section class="section-tight">
@@ -978,9 +1115,20 @@ def build_product_page(p):
         <p class="lead">{html.escape(p['short'])}</p>
         <p class="pdp-price" id="pdpPrice">{price_text}<span class="pdp-price-note"> · {("made to order" if personalised else "ready to ship")}</span></p>
         {sku_block}
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact/">Order — Ask Us First</a>
-          <a class="btn btn-outline-stone" href="https://wa.me/8613064191721">Chat With Us</a>
+        <div class="buy-block">
+          <div class="qty-row">
+            <label for="qtyInput">Quantity</label>
+            <div class="qty">
+              <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
+              <input id="qtyInput" type="number" min="1" max="99" value="1" inputmode="numeric"/>
+              <button type="button" data-qty="1" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="button" data-add {add_attrs}>Add to Bag</button>
+            <a class="btn btn-outline-stone" href="/contact/">Ask us first</a>
+          </div>
+          <p class="pay-line" data-ship-note></p>
         </div>
         <ul class="checks">{incl}</ul>
       </div>
@@ -998,6 +1146,7 @@ def build_product_page(p):
   </div>
 </section>
 
+{note_html}
 <section class="section">
   <div class="wrap measure-c">
     <p class="eyebrow center">Good To Know</p>
@@ -1015,6 +1164,10 @@ def build_product_page(p):
 </section>
 {CTA_BAND}
 </main>
+<div class="buybar">
+  <div class="buybar-price"><b id="buyBarPrice">{money(first_sku['price'])}</b><span id="buyBarName">{html.escape(first_sku['name'])}</span></div>
+  <button class="btn btn-primary" type="button" data-add {add_attrs}>Add to bag</button>
+</div>
 <script>
 (function(){{
   var hero=document.getElementById('heroImg'), priceEl=document.getElementById('pdpPrice');
@@ -1031,6 +1184,17 @@ def build_product_page(p):
       c.classList.add('is-active'); c.setAttribute('aria-pressed','true');
       hero.src=c.dataset.img;
       priceEl.innerHTML=c.dataset.price+'<span class="pdp-price-note"> · '+c.dataset.name+'</span>';
+      var addBtn=document.querySelector('[data-add]');
+      if(addBtn){{
+        document.querySelectorAll('[data-add]').forEach(function(b){{
+          b.dataset.id='{p['slug']}::'+c.dataset.sku;
+          b.dataset.variant=c.dataset.name;
+          b.dataset.price=c.dataset.pricec;
+          b.dataset.img=c.dataset.img;
+        }});
+      }}
+      var bp=document.getElementById('buyBarPrice'), bn=document.getElementById('buyBarName');
+      if(bp){{bp.textContent=c.dataset.price; bn.textContent=c.dataset.name;}}
       var firstThumb=document.querySelector('.thumb');
       if(firstThumb){{document.querySelectorAll('.thumb').forEach(function(t){{t.classList.remove('is-active');}});}}
     }});
@@ -1322,6 +1486,82 @@ def build_contact():
         desc="Request a personalized quote for a handmade pet keepsake or memorial — felted portraits, wind chimes, suncatchers, plaques, urns and farewell sets. Reply within 24 hours.",
         canonical=f"{SITE}/contact/", active="/contact/", body=body))
 
+def build_cart():
+    body = f"""
+<main>
+<section class="section-tight">
+  <div class="wrap">
+    <p class="eyebrow">Bag &amp; Checkout</p>
+    <h1 class="h1">Your bag.</h1>
+    <p class="lead" style="max-width:620px">Fixed-price pieces go straight from the workshop to you. Felted portraits and engraving are still quoted by hand.</p>
+    <div class="cart-layout">
+      <div id="cartApp" aria-live="polite">
+        <div class="cart-empty"><p class="lead">Loading your bag…</p></div>
+      </div>
+      <aside id="cartSide" class="cart-side" hidden></aside>
+    </div>
+    <noscript><div class="notice mt-6">Checkout needs JavaScript. Email
+      <a href="mailto:q8461994@gmail.com">q8461994@gmail.com</a> or message us on
+      <a href="https://wa.me/8613064191721">WhatsApp</a> and we will take the order by hand.</div></noscript>
+  </div>
+</section>
+</main>"""
+    page("cart/index.html", shell(
+        title="Your Bag | Again Paws",
+        desc="Review your bag and pay securely with PayPal — card or PayPal balance.",
+        canonical=f"{SITE}/cart/", active=None, body=body, robots="noindex, follow"))
+
+def build_thank_you():
+    body = f"""
+<main>
+<section class="section-tight">
+  <div class="wrap measure-c">
+    <p class="eyebrow">Order Confirmed</p>
+    <h1 class="h1">Thank you. It is in good hands.</h1>
+    <p class="lead">Your payment went through and the order is with us.</p>
+    <div class="card mt-5">
+      <div class="sum-row"><span>Order number</span><b id="okOrder">—</b></div>
+      <div class="sum-row"><span>Paid</span><b id="okTotal">—</b></div>
+      <div id="okItems"></div>
+      <p class="cart-mini mb-0">A PayPal receipt is on its way to the email on your PayPal account.</p>
+    </div>
+    <h2 class="h2 mt-7">What happens next</h2>
+    <ul class="checks">
+      <li>We check the order and confirm any personalisation by email within one working day.</li>
+      <li>Your piece is made or packed, then shipped with tracking.</li>
+      <li>Memorial Collection: 3–10 working days before dispatch. Felted portraits: 2–4 weeks.</li>
+      <li>You get a tracking number by email as soon as it leaves us.</li>
+    </ul>
+    <p class="mt-5">Need to add a name, a date, a photo or a gift note? Reply to your PayPal receipt or
+      <a href="/contact/">message us</a> with the order number above — it attaches to the same order.</p>
+    <div class="btn-row">
+      <a class="btn btn-stone" href="/products/#memorial">Back to the collection</a>
+      <a class="btn btn-outline-stone" href="/guides/">Read the guides</a>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){{
+  var q = new URLSearchParams(location.search);
+  var id = q.get('order'), tot = q.get('total');
+  if (id) document.getElementById('okOrder').textContent = id;
+  if (tot) document.getElementById('okTotal').textContent = '$' + Number(tot).toFixed(2);
+  try {{
+    var last = JSON.parse(localStorage.getItem('ap_last_order_v1') || 'null');
+    if (!last || !last.items || !last.items.length) return;
+    if (!tot && last.total) document.getElementById('okTotal').textContent = '$' + Number(last.total).toFixed(2);
+    document.getElementById('okItems').innerHTML = '<div class="sum-list mt-4">' + last.items.map(function (i) {{
+      return '<div class="sum-row"><span>' + i.qty + ' × ' + i.name + (i.variant ? ' · ' + i.variant : '') + '</span><span>$' + ((i.price * i.qty) / 100).toFixed(2) + '</span></div>';
+    }}).join('') + '</div>';
+  }} catch (e) {{}}
+}})();
+</script>"""
+    page("thank-you/index.html", shell(
+        title="Order Confirmed | Again Paws",
+        desc="Your Again Paws order is confirmed. Here is what happens next.",
+        canonical=f"{SITE}/thank-you/", active=None, body=body, robots="noindex, nofollow"))
+
 def build_404():
     body = f"""
 <main>
@@ -1375,9 +1615,19 @@ def reskin(rel):
     canonical = cm.group(1).strip() if cm else SITE + "/" + rel
     # strip legacy inline styles from kept content if any
     main_html = re.sub(r"<style.*?</style>", "", main_html, flags=re.S)
-    # wrap in prose container
-    if "prose-wrap" not in main_html:
-        main_html = f'<section class="section-tight"><div class="wrap"><div class="prose">{main_html}</div></div></section>'
+    # peel off any wrappers added by previous runs (they nest one level per build,
+    # and each .wrap adds 24px of padding — eight levels destroys mobile layout)
+    main_html = main_html.strip()
+    peel = re.compile(
+        r'^<section class="section-tight">\s*<div class="wrap">\s*<div class="prose">(.*)</div>\s*</div>\s*</section>$',
+        re.S)
+    while True:
+        m2 = peel.match(main_html)
+        if not m2:
+            break
+        main_html = m2.group(1).strip()
+    # wrap in exactly one prose container
+    main_html = f'<section class="section-tight"><div class="wrap"><div class="prose">{main_html}</div></div></section>'
     route = "/" + os.path.dirname(rel).replace("\\", "/").strip("/") + "/"
     active = "/guides/" if route.startswith("/guides") else None
     # move any JSON-LD from original head into new head
@@ -1462,6 +1712,7 @@ if __name__ == "__main__":
     for p in NEW:
         build_product_page(p)
     build_pricing(); build_about(); build_process(); build_customization(); build_contact(); build_404()
+    build_cart(); build_thank_you()
     for rel in RESKIN:
         reskin(rel)
     build_redirects(); build_sitemap(); build_llms()

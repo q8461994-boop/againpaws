@@ -23,7 +23,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500;600;700&display=swap"/>
 <link rel="stylesheet" href="/assets/site-v2.css"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Pet Memorial Offering Set · 55 Pieces", "description": "55-piece pet memorial offering set with treats, grooming items and traditional paper offerings.", "image": ["https://againpaws.vip/images/products/pet-memorial-offering-set/set-layout.webp", "https://againpaws.vip/images/products/pet-memorial-offering-set/rainbow-bridge.webp"], "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-memorial-offering-set/", "offers": [{"@type": "Offer", "name": "55-Piece Set · 3D Style", "price": "24.80", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-memorial-offering-set/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What exactly is in the box?", "acceptedAnswer": {"@type": "Answer", "text": "Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total."}}, {"@type": "Question", "name": "Is this a religious set?", "acceptedAnswer": {"@type": "Answer", "text": "The paper offerings follow a traditional East Asian farewell custom. Many families use the whole set; others use only the treats and keepsakes."}}, {"@type": "Question", "name": "Can it be shipped as a gift?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tell us in the order notes and we will leave the price out of the parcel."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Pet Memorial Offering Set · 55 Pieces", "description": "55-piece pet memorial offering set with treats, grooming items and traditional paper offerings.", "image": ["https://againpaws.vip/images/products/pet-memorial-offering-set/set-layout.webp", "https://againpaws.vip/images/products/pet-memorial-offering-set/rainbow-bridge.webp"], "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-memorial-offering-set/", "offers": [{"@type": "Offer", "name": "55-Piece Set · 3D Style", "price": "24.80", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-memorial-offering-set/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What exactly is in the box?", "acceptedAnswer": {"@type": "Answer", "text": "Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total."}}, {"@type": "Question", "name": "Is this a religious set?", "acceptedAnswer": {"@type": "Answer", "text": "It comes from a traditional East Asian farewell custom rather than from a single religion — the paper is a way of sending a pet off with the things it loved. Nothing in the box has to be used, and many families keep only the treats and keepsakes. There is a fuller explanation further up this page."}}, {"@type": "Question", "name": "Can it be shipped as a gift?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tell us when you order and we will leave the price out of the parcel and add a gift card."}}]}</script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -31,11 +32,14 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/" aria-current="page">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -54,9 +58,20 @@
         <p class="lead">55 pieces in one box: treats, milk and biscuits, grooming items, paper offerings and a memorial letter.</p>
         <p class="pdp-price" id="pdpPrice">$24.80<span class="pdp-price-note"> · ready to ship</span></p>
         
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact/">Order — Ask Us First</a>
-          <a class="btn btn-outline-stone" href="https://wa.me/8613064191721">Chat With Us</a>
+        <div class="buy-block">
+          <div class="qty-row">
+            <label for="qtyInput">Quantity</label>
+            <div class="qty">
+              <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
+              <input id="qtyInput" type="number" min="1" max="99" value="1" inputmode="numeric"/>
+              <button type="button" data-qty="1" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="button" data-add data-id="pet-memorial-offering-set::default" data-slug="pet-memorial-offering-set" data-name="Pet Memorial Offering Set · 55 Pieces" data-variant="55-Piece Set · 3D Style" data-price="2480" data-img="/images/products/pet-memorial-offering-set/set-layout.webp">Add to Bag</button>
+            <a class="btn btn-outline-stone" href="/contact/">Ask us first</a>
+          </div>
+          <p class="pay-line" data-ship-note></p>
         </div>
         <ul class="checks"><li>55 pieces, arranged in one gift box</li><li>Treats, milk, biscuits and freeze-dried snacks</li><li>Grooming items: comb, toothbrush, shampoo, nail clippers</li><li>Traditional paper offerings, folded ingots and memorial letter</li><li>Incense burner and keepsake card</li></ul>
       </div>
@@ -74,11 +89,18 @@
   </div>
 </section>
 
+<section class="section band-grey">
+  <div class="wrap measure-c">
+    <p class="eyebrow">A Note On The Paper Offerings</p>
+    <h2 class="h2">What the 55 pieces are for.</h2>
+    <div class="note-block mt-5"><p>The folded paper in this set comes from an East Asian farewell custom. Families gather the things a pet loved in life — a favourite treat, a bowl of milk, a comb — and add paper gifts: folded ingots, paper clothing and a written letter. At the graveside or at a small memorial service the paper is burned, so that the pet takes it along. It is a way of saying: this was yours, keep it.</p><p>Nothing here is required, and nothing is permanent. Plenty of families use the treats, the grooming items and the keepsake card, and leave the paper folded in the box as a memento. Others use the set exactly as intended. If you would rather not receive the paper items at all, say so when you order and we will take them out before shipping.</p><p>Buying it for someone else? The box arrives fully arranged, with a small card that explains each item in plain English — so nothing has to be explained out loud at a difficult moment.</p></div>
+  </div>
+</section>
 <section class="section">
   <div class="wrap measure-c">
     <p class="eyebrow center">Good To Know</p>
     <h2 class="h2 center">Common questions.</h2>
-    <div class="mt-6"><div class="faq-item"><h3>What exactly is in the box?</h3><p>Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total.</p></div><div class="faq-item"><h3>Is this a religious set?</h3><p>The paper offerings follow a traditional East Asian farewell custom. Many families use the whole set; others use only the treats and keepsakes.</p></div><div class="faq-item"><h3>Can it be shipped as a gift?</h3><p>Yes. Tell us in the order notes and we will leave the price out of the parcel.</p></div></div>
+    <div class="mt-6"><div class="faq-item"><h3>What exactly is in the box?</h3><p>Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total.</p></div><div class="faq-item"><h3>Is this a religious set?</h3><p>It comes from a traditional East Asian farewell custom rather than from a single religion — the paper is a way of sending a pet off with the things it loved. Nothing in the box has to be used, and many families keep only the treats and keepsakes. There is a fuller explanation further up this page.</p></div><div class="faq-item"><h3>Can it be shipped as a gift?</h3><p>Yes. Tell us when you order and we will leave the price out of the parcel and add a gift card.</p></div></div>
   </div>
 </section>
 
@@ -133,6 +155,10 @@
   </div>
 </section>
 </main>
+<div class="buybar">
+  <div class="buybar-price"><b id="buyBarPrice">$24.80</b><span id="buyBarName">55-Piece Set · 3D Style</span></div>
+  <button class="btn btn-primary" type="button" data-add data-id="pet-memorial-offering-set::default" data-slug="pet-memorial-offering-set" data-name="Pet Memorial Offering Set · 55 Pieces" data-variant="55-Piece Set · 3D Style" data-price="2480" data-img="/images/products/pet-memorial-offering-set/set-layout.webp">Add to bag</button>
+</div>
 <script>
 (function(){
   var hero=document.getElementById('heroImg'), priceEl=document.getElementById('pdpPrice');
@@ -149,12 +175,31 @@
       c.classList.add('is-active'); c.setAttribute('aria-pressed','true');
       hero.src=c.dataset.img;
       priceEl.innerHTML=c.dataset.price+'<span class="pdp-price-note"> · '+c.dataset.name+'</span>';
+      var addBtn=document.querySelector('[data-add]');
+      if(addBtn){
+        document.querySelectorAll('[data-add]').forEach(function(b){
+          b.dataset.id='pet-memorial-offering-set::'+c.dataset.sku;
+          b.dataset.variant=c.dataset.name;
+          b.dataset.price=c.dataset.pricec;
+          b.dataset.img=c.dataset.img;
+        });
+      }
+      var bp=document.getElementById('buyBarPrice'), bn=document.getElementById('buyBarName');
+      if(bp){bp.textContent=c.dataset.price; bn.textContent=c.dataset.name;}
       var firstThumb=document.querySelector('.thumb');
       if(firstThumb){document.querySelectorAll('.thumb').forEach(function(t){t.classList.remove('is-active');});}
     });
   });
 })();
 </script>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -170,6 +215,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -204,5 +250,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>

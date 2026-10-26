@@ -47,6 +47,7 @@
   ]
 }
 </script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -54,14 +55,25 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/" aria-current="page">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<main><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><p class="eyebrow">Photo guide</p><h1>What photos are best for a custom felted pet replica?</h1><p class="lead">The best photos show the features you most want remembered. You do not need professional photos—clear images from your phone can be a wonderful reference.</p><img src="/images/product-5.webp" alt="Detailed custom needle-felted pet keepsake"><h2>Start with these three photos</h2><ol><li><strong>Face photo:</strong> a bright, in-focus image where the eyes, nose and markings are visible.</li><li><strong>Side or body photo:</strong> useful for coat color, ear shape and posture.</li><li><strong>Favorite expression:</strong> the photo that feels most like your pet.</li></ol><h2>Helpful details to mention</h2><p>Tell us your pet's name, any distinctive markings, the expression you love most, and whether the finished piece is a memorial or a gift. If a detail is important to you, include a close-up photo where possible.</p><h2>Photos do not need to be perfect</h2><p>Older photos can still be meaningful. Send the clearest images you have, and include more than one angle when possible. We will use them to understand the details of your custom request.</p><div class="card"><h2>Ready to start your custom piece?</h2><p>Send your pet's photos, preferred style and U.S. destination. We will reply with a personal quote; prices range from $87 to $477, with shipping quoted separately.</p><a class="cta" href="https://wa.me/8613064191721?text=Hello%20Again%20Paws!%20I%20would%20like%20a%20quote%20for%20a%20custom%20needle-felted%20pet%20replica.%20My%20pet%20is%3A%20%5Bname%2Fbreed%5D.%20I%20would%20like%3A%20%5Bstyle%2Fsize%5D.%20My%20destination%20is%3A%20%5Bcity%2Fstate%2FZIP%5D.%20I%20will%20send%20photos%20next.">Send photos on WhatsApp</a><a class="cta secondary" href="mailto:q8461994@gmail.com?subject=Custom%20needle-felted%20pet%20quote">Email for a quote</a></div><h2>More guides</h2><div class="related"><a href="/guides/needle-felted-pet-cost/">Custom needle-felted pet cost guide →</a><a href="/guides/best-photos-for-felted-pet/">Best photos for a felted pet →</a><a href="/products">See custom pet styles →</a></div></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></main>
+<main><section class="section-tight"><div class="wrap"><div class="prose"><p class="eyebrow">Photo guide</p><h1>What photos are best for a custom felted pet replica?</h1><p class="lead">The best photos show the features you most want remembered. You do not need professional photos—clear images from your phone can be a wonderful reference.</p><img src="/images/product-5.webp" alt="Detailed custom needle-felted pet keepsake"><h2>Start with these three photos</h2><ol><li><strong>Face photo:</strong> a bright, in-focus image where the eyes, nose and markings are visible.</li><li><strong>Side or body photo:</strong> useful for coat color, ear shape and posture.</li><li><strong>Favorite expression:</strong> the photo that feels most like your pet.</li></ol><h2>Helpful details to mention</h2><p>Tell us your pet's name, any distinctive markings, the expression you love most, and whether the finished piece is a memorial or a gift. If a detail is important to you, include a close-up photo where possible.</p><h2>Photos do not need to be perfect</h2><p>Older photos can still be meaningful. Send the clearest images you have, and include more than one angle when possible. We will use them to understand the details of your custom request.</p><div class="card"><h2>Ready to start your custom piece?</h2><p>Send your pet's photos, preferred style and U.S. destination. We will reply with a personal quote; prices range from $87 to $477, with shipping quoted separately.</p><a class="cta" href="https://wa.me/8613064191721?text=Hello%20Again%20Paws!%20I%20would%20like%20a%20quote%20for%20a%20custom%20needle-felted%20pet%20replica.%20My%20pet%20is%3A%20%5Bname%2Fbreed%5D.%20I%20would%20like%3A%20%5Bstyle%2Fsize%5D.%20My%20destination%20is%3A%20%5Bcity%2Fstate%2FZIP%5D.%20I%20will%20send%20photos%20next.">Send photos on WhatsApp</a><a class="cta secondary" href="mailto:q8461994@gmail.com?subject=Custom%20needle-felted%20pet%20quote">Email for a quote</a></div><h2>More guides</h2><div class="related"><a href="/guides/needle-felted-pet-cost/">Custom needle-felted pet cost guide →</a><a href="/guides/best-photos-for-felted-pet/">Best photos for a felted pet →</a><a href="/products">See custom pet styles →</a></div></div></div></section></main>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -77,6 +89,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -111,5 +124,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>

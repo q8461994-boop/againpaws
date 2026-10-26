@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500;600;700&display=swap"/>
 <link rel="stylesheet" href="/assets/site-v2.css"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Classic Square Pet Cremation Urn", "description": "Classic square pet cremation urn, 1100 ml, with photo window in four colours.", "image": ["https://againpaws.vip/images/products/pet-cremation-urn/pink.webp", "https://againpaws.vip/images/products/pet-cremation-urn/white.webp", "https://againpaws.vip/images/products/pet-cremation-urn/black.webp", "https://againpaws.vip/images/products/pet-cremation-urn/grey.webp", "https://againpaws.vip/images/products/pet-cremation-urn/grey-lifestyle.webp"], "brand": {"@type": "Brand", "name": "Again Paws"}, "url": "https://againpaws.vip/pet-cremation-urn/", "offers": [{"@type": "Offer", "name": "Pink", "price": "28.50", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-cremation-urn/"}, {"@type": "Offer", "name": "White", "price": "28.50", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-cremation-urn/"}, {"@type": "Offer", "name": "Black", "price": "28.50", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-cremation-urn/"}, {"@type": "Offer", "name": "Grey", "price": "28.50", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://againpaws.vip/pet-cremation-urn/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What size pet does it suit?", "acceptedAnswer": {"@type": "Answer", "text": "With 1100 ml of interior space it suits most cats and small to medium dogs. For larger pets, message us and we will advise."}}, {"@type": "Question", "name": "Is the urn personalised?", "acceptedAnswer": {"@type": "Answer", "text": "No — the urn ships as designed, with a photo window you fill yourself."}}, {"@type": "Question", "name": "How do I insert the photo?", "acceptedAnswer": {"@type": "Answer", "text": "Trim a print to the window size, slide it behind the front frame and press the frame back into place."}}]}</script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -31,11 +32,14 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/" aria-current="page">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -55,11 +59,22 @@
         <p class="pdp-price" id="pdpPrice">$28.50<span class="pdp-price-note"> · ready to ship</span></p>
         <div class="sku-group">
         <p class="sku-label">Choose a colour</p>
-        <div class="sku-row"><button class="sku-chip is-active" type="button" aria-pressed="true" data-img="/images/products/pet-cremation-urn/pink.webp" data-price="$28.50" data-name="Pink"><img src="/images/products/pet-cremation-urn/pink.webp" alt="" loading="lazy"/><span><b>Pink</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/white.webp" data-price="$28.50" data-name="White"><img src="/images/products/pet-cremation-urn/white.webp" alt="" loading="lazy"/><span><b>White</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/black.webp" data-price="$28.50" data-name="Black"><img src="/images/products/pet-cremation-urn/black.webp" alt="" loading="lazy"/><span><b>Black</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/grey.webp" data-price="$28.50" data-name="Grey"><img src="/images/products/pet-cremation-urn/grey.webp" alt="" loading="lazy"/><span><b>Grey</b><i>$28.50</i></span></button></div>
+        <div class="sku-row"><button class="sku-chip is-active" type="button" aria-pressed="true" data-img="/images/products/pet-cremation-urn/pink.webp" data-price="$28.50" data-name="Pink" data-sku="pink" data-pricec="2850"><img src="/images/products/pet-cremation-urn/pink.webp" alt="" loading="lazy"/><span><b>Pink</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/white.webp" data-price="$28.50" data-name="White" data-sku="white" data-pricec="2850"><img src="/images/products/pet-cremation-urn/white.webp" alt="" loading="lazy"/><span><b>White</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/black.webp" data-price="$28.50" data-name="Black" data-sku="black" data-pricec="2850"><img src="/images/products/pet-cremation-urn/black.webp" alt="" loading="lazy"/><span><b>Black</b><i>$28.50</i></span></button><button class="sku-chip" type="button" aria-pressed="false" data-img="/images/products/pet-cremation-urn/grey.webp" data-price="$28.50" data-name="Grey" data-sku="grey" data-pricec="2850"><img src="/images/products/pet-cremation-urn/grey.webp" alt="" loading="lazy"/><span><b>Grey</b><i>$28.50</i></span></button></div>
       </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact/">Order — Ask Us First</a>
-          <a class="btn btn-outline-stone" href="https://wa.me/8613064191721">Chat With Us</a>
+        <div class="buy-block">
+          <div class="qty-row">
+            <label for="qtyInput">Quantity</label>
+            <div class="qty">
+              <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
+              <input id="qtyInput" type="number" min="1" max="99" value="1" inputmode="numeric"/>
+              <button type="button" data-qty="1" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="button" data-add data-id="pet-cremation-urn::pink" data-slug="pet-cremation-urn" data-name="Classic Square Pet Cremation Urn" data-variant="Pink" data-price="2850" data-img="/images/products/pet-cremation-urn/pink.webp">Add to Bag</button>
+            <a class="btn btn-outline-stone" href="/contact/">Ask us first</a>
+          </div>
+          <p class="pay-line" data-ship-note></p>
         </div>
         <ul class="checks"><li>Cast urn with photo window</li><li>Brushed gold paw and corner detailing</li><li>Fits a standard trimmed photo behind the window</li><li>Protective packaging for transit</li></ul>
       </div>
@@ -76,6 +91,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <div class="wrap measure-c">
@@ -136,6 +152,10 @@
   </div>
 </section>
 </main>
+<div class="buybar">
+  <div class="buybar-price"><b id="buyBarPrice">$28.50</b><span id="buyBarName">Pink</span></div>
+  <button class="btn btn-primary" type="button" data-add data-id="pet-cremation-urn::pink" data-slug="pet-cremation-urn" data-name="Classic Square Pet Cremation Urn" data-variant="Pink" data-price="2850" data-img="/images/products/pet-cremation-urn/pink.webp">Add to bag</button>
+</div>
 <script>
 (function(){
   var hero=document.getElementById('heroImg'), priceEl=document.getElementById('pdpPrice');
@@ -152,12 +172,31 @@
       c.classList.add('is-active'); c.setAttribute('aria-pressed','true');
       hero.src=c.dataset.img;
       priceEl.innerHTML=c.dataset.price+'<span class="pdp-price-note"> · '+c.dataset.name+'</span>';
+      var addBtn=document.querySelector('[data-add]');
+      if(addBtn){
+        document.querySelectorAll('[data-add]').forEach(function(b){
+          b.dataset.id='pet-cremation-urn::'+c.dataset.sku;
+          b.dataset.variant=c.dataset.name;
+          b.dataset.price=c.dataset.pricec;
+          b.dataset.img=c.dataset.img;
+        });
+      }
+      var bp=document.getElementById('buyBarPrice'), bn=document.getElementById('buyBarName');
+      if(bp){bp.textContent=c.dataset.price; bn.textContent=c.dataset.name;}
       var firstThumb=document.querySelector('.thumb');
       if(firstThumb){document.querySelectorAll('.thumb').forEach(function(t){t.classList.remove('is-active');});}
     });
   });
 })();
 </script>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -173,6 +212,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -207,5 +247,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>

@@ -42,6 +42,7 @@
   ]
 }
 </script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -49,14 +50,25 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<main><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><p class="eyebrow">Handmade custom pet keepsakes</p><h1>Custom pet keepsake made from your photo</h1><p class="lead">A handmade custom pet keepsake turns the details you love—expression, markings and personality—into something you can hold and keep.</p><img src="/images/product-2.webp" alt="Custom pet keepsake made from your photo"><h2>A keepsake that begins with the photos you already have</h2><p>A favorite photo can hold a pet’s familiar look and character. When you share a clear face photo plus another angle or detail image, it gives the maker a stronger reference for a one-of-a-kind needle-felted keepsake.</p><h2>For a gift, a memory or everyday display</h2><p>Custom pet keepsakes are meaningful for pet parents, families and friends who want a personal present. Tell us whether your piece is for a gift or remembrance and include the details that matter most to you.</p><h2>How to request your piece</h2><ol><li>Choose your favorite pet photos.</li><li>Send them with the style you prefer.</li><li>Share your U.S. destination for a shipping quote.</li><li>Receive a personal quote before the handmade work begins.</li></ol><div class="card"><h2>Start with your pet photos</h2><p>Send clear photos, your preferred keepsake style and your U.S. destination. Custom pieces range from $87 to $477; shipping is quoted separately.</p><a class="cta" href="https://wa.me/8613064191721?text=Hello%20Again%20Paws!%20I%20would%20like%20a%20quote%20for%20a%20handmade%20custom%20pet%20keepsake.%20I%20will%20send%20my%20pet%20photos%2C%20preferred%20style%2C%20and%20U.S.%20destination.">Send photos on WhatsApp</a><a class="cta secondary" href="mailto:q8461994@gmail.com?subject=Custom%20pet%20keepsake%20quote">Email for a quote</a></div><h2>Explore more</h2><div class="links"><a href="/products">Browse custom pet styles →</a><a href="/guides/best-photos-for-felted-pet/">Choose the best pet photos →</a><a href="/guides/needle-felted-pet-cost/">View the price guide →</a></div></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></main>
+<main><section class="section-tight"><div class="wrap"><div class="prose"><p class="eyebrow">Handmade custom pet keepsakes</p><h1>Custom pet keepsake made from your photo</h1><p class="lead">A handmade custom pet keepsake turns the details you love—expression, markings and personality—into something you can hold and keep.</p><img src="/images/product-2.webp" alt="Custom pet keepsake made from your photo"><h2>A keepsake that begins with the photos you already have</h2><p>A favorite photo can hold a pet’s familiar look and character. When you share a clear face photo plus another angle or detail image, it gives the maker a stronger reference for a one-of-a-kind needle-felted keepsake.</p><h2>For a gift, a memory or everyday display</h2><p>Custom pet keepsakes are meaningful for pet parents, families and friends who want a personal present. Tell us whether your piece is for a gift or remembrance and include the details that matter most to you.</p><h2>How to request your piece</h2><ol><li>Choose your favorite pet photos.</li><li>Send them with the style you prefer.</li><li>Share your U.S. destination for a shipping quote.</li><li>Receive a personal quote before the handmade work begins.</li></ol><div class="card"><h2>Start with your pet photos</h2><p>Send clear photos, your preferred keepsake style and your U.S. destination. Custom pieces range from $87 to $477; shipping is quoted separately.</p><a class="cta" href="https://wa.me/8613064191721?text=Hello%20Again%20Paws!%20I%20would%20like%20a%20quote%20for%20a%20handmade%20custom%20pet%20keepsake.%20I%20will%20send%20my%20pet%20photos%2C%20preferred%20style%2C%20and%20U.S.%20destination.">Send photos on WhatsApp</a><a class="cta secondary" href="mailto:q8461994@gmail.com?subject=Custom%20pet%20keepsake%20quote">Email for a quote</a></div><h2>Explore more</h2><div class="links"><a href="/products">Browse custom pet styles →</a><a href="/guides/best-photos-for-felted-pet/">Choose the best pet photos →</a><a href="/guides/needle-felted-pet-cost/">View the price guide →</a></div></div></div></section></main>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -72,6 +84,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -106,5 +119,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>

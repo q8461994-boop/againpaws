@@ -121,6 +121,7 @@
   }
 ]
     </script>
+<script src="/assets/store-config.js"></script>
 <script src="/analytics.js" defer></script>
 </head>
 <body>
@@ -128,16 +129,17 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a class="brand" href="/">Again <em>Paws</em></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Main navigation">
       <a class="nav-link" href="/">Home</a><a class="nav-link" href="/products/">Products</a><a class="nav-link" href="/pricing/">Pricing</a><a class="nav-link" href="/process/">Process</a><a class="nav-link" href="/guides/" aria-current="page">Guides</a><a class="nav-link" href="/about/">About</a><a class="nav-link" href="/contact/">Contact</a>
       <a class="btn btn-primary btn-sm" href="/contact/">Request a Quote</a>
     </nav>
+    <div class="header-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping bag"><span>Bag</span><span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<main><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose"><section class="section-tight"><div class="wrap"><div class="prose">
-
-<h1>Are Custom Pet Portraits Worth It?</h1>
+<main><section class="section-tight"><div class="wrap"><div class="prose"><h1>Are Custom Pet Portraits Worth It?</h1>
 <p class="updated">By the Again Paws studio · October 2026</p>
 <p>Straight answer: yes, if you want a one-of-a-kind object made from your pet's actual photos and you pick the right maker. No, if you expect it to be cheap, fast, or identical to the photo. Here is the honest breakdown.</p>
 
@@ -162,9 +164,15 @@
 <div class="faq-item"><h2>What if my pet has passed away and I only have old photos?</h2><p>That is most of our memorial orders. Older, slightly blurry photos usually contain enough detail. A good maker tells you what is possible before you pay — see our <a href="/needle-felted-pet-memorial-gift/">memorial keepsake page</a>.</p></div>
 <div class="faq-item"><h2>Is handmade really better than a digital print?</h2><p>Different things. A print decorates; a felted sculpture commemorates. If you want an object with weight, texture and hours of human attention in it, handmade wins. If you want a quick gift, print.</p></div>
 
-<p class="foot-cta">Curious what your photos could become? <a class="btn" href="/contact/">Request a free quote</a> — we reply within 24 hours with honest advice, even if the answer is "a felted portrait isn't right for these photos."</p>
-
-</div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></div></div></section></main>
+<p class="foot-cta">Curious what your photos could become? <a class="btn" href="/contact/">Request a free quote</a> — we reply within 24 hours with honest advice, even if the answer is "a felted portrait isn't right for these photos."</p></div></div></section></main>
+<div class="drawer" id="cartDrawer" hidden aria-hidden="true">
+  <div class="drawer-backdrop" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <header class="drawer-head"><h2>Your bag</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close bag">×</button></header>
+    <div class="drawer-body" id="cartDrawerList"></div>
+    <footer class="drawer-foot" id="cartDrawerFoot" hidden></footer>
+  </aside>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -180,6 +188,7 @@
           <li><a href="/products/#memorial">Memorial Collection</a></li>
           <li><a href="/pricing/">Pricing</a></li>
           <li><a href="/customization/">Customization</a></li>
+          <li><a href="/cart/">Bag &amp; Checkout</a></li>
         </ul>
       </div>
       <div>
@@ -214,5 +223,6 @@
   if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});}
 })();
 </script>
+<script src="/assets/store.js" defer></script>
 </body>
 </html>
