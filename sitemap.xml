@@ -1,16 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap/1.1">
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:ns1="http://www.google.com/schemas/sitemap/1.1">
 
-  <!--
-    Again Paws sitemap v2（2026-10-23）
-    变更：+4 个信任页；根路径页面统一为尾斜杠（配合目录式预渲染 + GH Pages 301）。
-    上线预渲染构建后，用本文件替换仓库根目录的 sitemap.xml。
-  -->
+  
 
   <url>
     <loc>https://againpaws.vip/</loc>
-    <image:image><image:loc>https://againpaws.vip/images/hero.webp</image:loc></image:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/hero.webp</ns1:loc></ns1:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,11 +13,11 @@
 
   <url>
     <loc>https://againpaws.vip/products/</loc>
-    <image:image><image:loc>https://againpaws.vip/images/product-1.webp</image:loc></image:image>
-    <image:image><image:loc>https://againpaws.vip/images/product-2.webp</image:loc></image:image>
-    <image:image><image:loc>https://againpaws.vip/images/product-3.webp</image:loc></image:image>
-    <image:image><image:loc>https://againpaws.vip/images/product-4.webp</image:loc></image:image>
-    <image:image><image:loc>https://againpaws.vip/images/product-5.webp</image:loc></image:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-1.webp</ns1:loc></ns1:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-2.webp</ns1:loc></ns1:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-3.webp</ns1:loc></ns1:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-4.webp</ns1:loc></ns1:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-5.webp</ns1:loc></ns1:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -70,7 +65,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- 信任与合规 -->
+  
   <url>
     <loc>https://againpaws.vip/refund-policy/</loc>
     <lastmod>2026-10-23</lastmod>
@@ -90,7 +85,7 @@
     <priority>0.4</priority>
   </url>
 
-  <!-- 指南 -->
+  
   <url>
     <loc>https://againpaws.vip/guides/</loc>
     <lastmod>2026-10-23</lastmod>
@@ -116,27 +111,27 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 落地页 -->
+  
   <url>
     <loc>https://againpaws.vip/custom-pet-keepsake-from-photo/</loc>
-    <image:image><image:loc>https://againpaws.vip/images/product-2.webp</image:loc></image:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-2.webp</ns1:loc></ns1:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://againpaws.vip/needle-felted-pet-memorial-gift/</loc>
-    <image:image><image:loc>https://againpaws.vip/images/product-4.webp</image:loc></image:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-4.webp</ns1:loc></ns1:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://againpaws.vip/personalized-pet-gift-from-photo/</loc>
-    <image:image><image:loc>https://againpaws.vip/images/product-5.webp</image:loc></image:image>
+    <ns1:image><ns1:loc>https://againpaws.vip/images/product-5.webp</ns1:loc></ns1:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-</urlset>
+<url><loc>https://againpaws.vip/guides/pet-memorial-gift-ideas/</loc><lastmod>2026-10-26</lastmod></url><url><loc>https://againpaws.vip/guides/are-custom-pet-portraits-worth-it/</loc><lastmod>2026-10-26</lastmod></url><url><loc>https://againpaws.vip/guides/how-long-does-a-custom-pet-portrait-take/</loc><lastmod>2026-10-26</lastmod></url></urlset>
