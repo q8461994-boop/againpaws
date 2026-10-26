@@ -212,6 +212,26 @@ padding:var(--space-4) var(--space-5);margin-bottom:var(--space-3)}
 display:flex;align-items:center;justify-content:center;aspect-ratio:1/1}
 .detail-art img{width:100%;height:100%;object-fit:cover}
 .detail-art svg{width:80%;height:auto}
+.thumb-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.thumb{width:76px;height:76px;padding:0;border:1px solid var(--color-hairline);border-radius:var(--radius-md);
+overflow:hidden;background:var(--color-surface);cursor:pointer}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb.is-active{border-color:var(--color-stone);box-shadow:0 0 0 1px var(--color-stone)}
+.sku-group{margin:var(--space-5) 0 var(--space-4)}
+.sku-label{font:600 14px/1.3 var(--font-sans);color:var(--color-stone);margin:0 0 10px}
+.sku-row{display:flex;flex-direction:column;gap:10px}
+.sku-chip{display:flex;align-items:center;gap:12px;text-align:left;background:var(--color-surface);
+border:1px solid var(--color-hairline);border-radius:var(--radius-md);padding:8px 14px 8px 8px;cursor:pointer;width:100%;
+font-family:var(--font-sans)}
+.sku-chip img{width:52px;height:52px;object-fit:cover;border-radius:8px;flex:none}
+.sku-chip span{display:flex;flex-direction:column;font-size:15px;color:var(--color-ink);line-height:1.35}
+.sku-chip b{font-weight:600}
+.sku-chip em{font-style:normal;color:var(--color-ash);font-size:13px}
+.sku-chip i{font-style:normal;color:var(--color-clay);font-weight:600;font-size:14px;margin-top:2px}
+.sku-chip:hover{border-color:var(--color-silver)}
+.sku-chip.is-active{border-color:var(--color-stone);box-shadow:0 0 0 1px var(--color-stone)}
+.pdp-price{font:300 34px/1.2 var(--font-serif);color:var(--color-ink);margin:var(--space-4) 0 var(--space-2)}
+.pdp-price-note{font:400 14px/1.4 var(--font-sans);color:var(--color-ash)}
 .spec-list{width:100%;border-collapse:collapse;font-size:16px}
 .spec-list th{font:700 12px/1.4 var(--font-sans);letter-spacing:1px;text-transform:uppercase;color:var(--color-ash);
 text-align:left;width:38%;padding:12px 0;border-bottom:1px solid var(--color-hairline);vertical-align:top}
@@ -352,86 +372,173 @@ FELT = [
 ]
 
 # price=None → "Price on request" until the owner supplies the final numbers (single edit here).
+def money(v):
+    """$39 · $23.50 · $28.50 — drop trailing zeros only when the cents are .00"""
+    return ("$%d" % v) if abs(v - int(v)) < 1e-9 else ("$%.2f" % v)
+
+
+def sku(sid, name, price, img, note=""):
+    return dict(id=sid, name=name, price=price, img=img, note=note)
+
+
+IMG = "/images/products"
+
 NEW = [
- dict(slug="custom-pet-wind-chime", price=None, art="wind_chime", kicker="Memorial Collection",
+ dict(slug="custom-pet-wind-chime", kicker="Memorial Collection",
       name="Custom Pet Memorial Wind Chime",
-      desc="A gentle wind chime personalized with your pet's portrait and name — a soft reminder every time the breeze passes.",
-      short="Personalized chime with your pet's photo charm, engraved name and dates",
-      long=("Some pets are felt in sound as much as in sight. Our custom memorial wind chime carries a hand-finished charm "
-            "with your pet's portrait, their name and their dates, hung above a set of warm, low-toned chime tubes. "
-            "Hang it on a porch, by a window, or near a favourite resting spot in the garden — every breeze becomes a quiet hello."),
-      incl=["Photo charm customized from your pet's picture", "Engraved name and dates", "Weather-resistant coated tubes", "Ready to hang — no assembly"],
-      spec=[("Material","Hardwood crown, coated aluminium tubes, printed photo charm"),
-            ("Size","Approx. 45–60 cm total hang length"),
-            ("Personalization","Pet photo, name, dates, short message (optional)"),
-            ("Lead time","7–12 days production before shipping"),
-            ("Shipping","Worldwide, tracked")],
-      faq=[("Can the wind chime stay outdoors?","Yes. The tubes and crown are coated for outdoor use. As with any keepsake, a sheltered spot will keep the photo charm vivid for longer."),
-           ("What photo works best?","A clear, well-lit photo where your pet's face fills the frame works best. We confirm the crop with you before production."),
-           ("Can I choose the message on the charm?","Yes — most owners choose the pet's name and dates, but a short line such as “Best friend, always” fits beautifully.")] ),
- dict(slug="custom-pet-window-suncatcher", price=None, art="suncatcher", kicker="Memorial Collection",
-      name="Custom Pet Portrait Window Suncatcher",
-      desc="A light-catching window ornament made with your pet's portrait — their silhouette glows in the morning sun.",
-      short="Photo suncatcher for windows, personalized with your pet's portrait",
-      long=("Turn the light your pet loved to nap in into a small daily memorial. Our custom window suncatcher holds your pet's "
-            "portrait in a light-catching pendant that glows when the sun passes through. It hangs from a fine chain with a "
-            "suction hook, ready for any window, mirror or sunny corner."),
-      incl=["Portrait pendant customized from your pet's photo", "Suction hook and hanging chain included", "Engraved name or short message (optional)", "Gift-ready packaging"],
-      spec=[("Material","Light-catching acrylic or glass-style pendant, metal chain"),
-            ("Size","Pendant approx. 8–12 cm diameter"),
-            ("Personalization","Pet photo, name or short message"),
-            ("Lead time","7–12 days production before shipping"),
-            ("Shipping","Worldwide, tracked")],
-      faq=[("Where should I hang it?","Any window that gets direct or strong indirect light. The portrait reads best against a bright background."),
-           ("Is it heavy?","No — the pendant is lightweight acrylic or glass-style material, safe for standard suction hooks."),
-           ("Can I order two with different pets?","Yes, and many customers do. Send both photos and we will match the style so they hang well together.")] ),
- dict(slug="custom-pet-memorial-plaque", price=None, art="plaque", kicker="Memorial Collection",
-      name="Custom Pet Memorial Plaque & Grave Marker",
-      desc="An engraved memorial plaque for a garden, grave or special place — weatherproof, dignified, made to last.",
-      short="Engraved grave marker or garden plaque with name, dates and a paw emblem",
-      long=("A place to visit, a mark that stays. Our custom memorial plaque is engraved with your pet's name, their dates and a "
-            "paw emblem, finished to withstand the weather where they loved to be — the garden, the graveside, or beneath a "
-            "favourite tree. Choose a stake for lawns and gardens, or a flat version for shelves and memorial walls."),
-      incl=["Engraved plaque with name, dates and paw emblem", "Garden stake or flat display option", "All-weather protective finish", "Optional short memorial line"],
-      spec=[("Material","Cast stone or hardwood composite with weatherproof finish"),
-            ("Size","Approx. 20 × 14 cm (custom sizes on request)"),
-            ("Personalization","Name, dates, short memorial line, paw emblem"),
-            ("Lead time","7–14 days production before shipping"),
-            ("Shipping","Worldwide, tracked")],
-      faq=[("Will it survive rain and frost?","Yes. The plaque and engraving are finished for outdoor year-round use; colours are UV-stable."),
-           ("Stake or flat — which should I choose?","The stake suits lawns, gardens and graveside soil. The flat version suits urn shelves, memorial walls and indoor display."),
-           ("How much text fits?","Comfortably a name, two dates and one short line (about 30 characters). We confirm the layout before engraving.")] ),
- dict(slug="custom-pet-urn", price=None, art="urn", kicker="Memorial Collection",
-      name="Custom Wooden Pet Urn",
-      desc="A calm, beautifully made wooden urn with your pet's name and portrait — a dignified place to keep them close.",
-      short="Handmade wooden urn with engraved name, dates and photo plaque",
-      long=("A resting place that feels like furniture, not loss. Our custom wooden urn is made from warm hardwood with a soft "
-            "matte finish, engraved with your pet's name and dates and finished with a portrait plaque made from your photo. "
-            "Available in three sizes sized to your pet, with a secure threaded or magnetic closure."),
-      incl=["Hardwood urn with soft matte finish", "Engraved name and dates", "Portrait plaque from your pet's photo", "Felt base to protect furniture"],
-      spec=[("Material","Solid hardwood, matte protective finish"),
-            ("Sizes","Small (pets up to 10 kg) · Medium (up to 25 kg) · Large (up to 45 kg)"),
-            ("Personalization","Name, dates, portrait plaque, short line"),
-            ("Lead time","10–15 days production before shipping"),
-            ("Shipping","Worldwide, tracked")],
-      faq=[("How do I choose the size?","As a rule of thumb, one cubic inch of interior space per pound of body weight. Tell us your pet's weight and we will recommend the right size."),
-           ("Can it hold a collar or toy inside?","Yes — many families place a collar, tag or small toy inside alongside the ashes."),
-           ("Is the closure secure?","Yes. Each urn closes with a threaded or magnetic panel sealed from underneath, and sits on a felt base.")] ),
- dict(slug="pet-farewell-remembrance-set", price=None, art="remembrance_set", kicker="Memorial Collection",
-      name="Pet Farewell & Remembrance Set",
-      desc="A gentle set for saying goodbye: memorial candle, remembrance card, scatter pouch and keepsake token.",
-      short="Ceremony set — memorial candle, remembrance card, scatter pouch and token",
-      long=("For the days when words are hard. The Farewell & Remembrance Set gathers the small rituals that help: a hand-poured "
-            "memorial candle, a printed remembrance card with your pet's photo, a linen scatter pouch for a favourite spot, and a "
-            "small keepsake token to keep in a pocket or a drawer. Together they make space for a calm, personal goodbye."),
-      incl=["Hand-poured memorial candle", "Remembrance card printed with your pet's photo", "Linen scatter pouch", "Keepsake token with paw emblem", "Keepsake box to hold it all"],
-      spec=[("Material","Soy candle, cotton linen pouch, letterpress card, brass token"),
-            ("Personalization","Pet photo and name on the remembrance card"),
+      price_from=39.0,
+      desc="A wooden wind chime with an engraved tag carrying your pet's photo, name and dates.",
+      short="Engraved photo tag, wooden crown and warm-sounding tubes — personalise it with a photo, name and dates.",
+      long=("Some pets are remembered in sound as much as in sight. This memorial wind chime hangs a wooden tag engraved with "
+            "your pet's photo, name and dates, above a ring of metal tubes tuned to a soft, low tone. Hang it on a porch, by a "
+            "window or near a favourite spot in the garden — every breeze becomes a quiet hello."),
+      incl=["Wooden tag engraved with your pet's photo, name and dates",
+            "Solid wood crown with metal tubes",
+            "Ready to hang — no assembly",
+            "Gift-ready packaging"],
+      spec=[("Total length","Approx. 68 cm"),
+            ("Wooden crown","Ø 8.8 cm"),
+            ("Hanging tag","9.5 × 5 cm"),
+            ("Materials","Solid wood, aluminium tubes"),
+            ("Personalization","Photo, name and dates engraved on the tag"),
             ("Lead time","5–10 days production before shipping"),
             ("Shipping","Worldwide, tracked")],
-      faq=[("Is this suitable as a sympathy gift?","Very much so — it is one of our most-gifted sets. We can ship directly to the recipient with a handwritten note."),
-           ("Can I order the set without the candle?","Yes, tell us in your inquiry and we will adjust the quote."),
-           ("How long does the candle burn?","Approximately 20–25 hours, sized for several evenings of remembrance.")] ),
+      faq=[("Can I put any photo on the tag?","Yes. Send a clear, well-lit photo where your pet's face fills the frame. We confirm the crop with you before engraving."),
+           ("Can it hang outdoors?","The wood and tubes are finished for outdoor use. Under a porch or eaves the engraved tag will stay crisp for years."),
+           ("What text fits on the tag?","A name and dates sit comfortably alongside the photo. A short line such as “Always with me” can be added on request.")],
+      images=[(f"{IMG}/custom-pet-wind-chime/natural-silver-photo.webp","Custom pet memorial wind chime in natural wood with silver tubes and an engraved photo tag"),
+              (f"{IMG}/custom-pet-wind-chime/natural-silver-silhouette.webp","Wind chime with engraved silhouette tag showing a pet name"),
+              (f"{IMG}/custom-pet-wind-chime/coffee-silver-detail.webp","Coffee-coloured wooden crown with silver chime tubes"),
+              (f"{IMG}/custom-pet-wind-chime/coffee-black-detail.webp","Coffee-coloured wooden crown with black chime tubes")],
+      skus=[sku("natural-silver","Natural Wood · Silver Tubes",39.0,f"{IMG}/custom-pet-wind-chime/natural-silver-photo.webp","Light natural wood"),
+            sku("coffee-silver","Coffee Wood · Silver Tubes",39.0,f"{IMG}/custom-pet-wind-chime/coffee-silver-detail.webp","Warm coffee wood"),
+            sku("coffee-black","Coffee Wood · Black Tubes",39.0,f"{IMG}/custom-pet-wind-chime/coffee-black-detail.webp","Matte black tubes")],
+      sku_label="Choose a finish",
+      schema_desc="Wooden memorial wind chime engraved with your pet's photo, name and dates."),
+
+ dict(slug="custom-pet-window-suncatcher", kicker="Memorial Collection",
+      name="Custom Pet Portrait Window Suncatcher",
+      price_from=31.0,
+      desc="A stained-glass style pet portrait made from your photo — it glows in the window light.",
+      short="Made to order from your photo in three sizes, with a chain ready to hang.",
+      long=("Turn the light your pet loved to nap in into a small daily ritual. Your photo is developed into a stained-glass "
+            "style portrait panel, finished with a metal chain — hang it in any window, on a mirror or across a sunny corner, "
+            "and the colours come alive when the light passes through."),
+      incl=["Portrait panel made from your pet's photo",
+            "Metal hanging chain and ring",
+            "Name or short message on request",
+            "Protective gift packaging"],
+      spec=[("Sizes","15 × 15 cm · 20 × 20 cm · 25 × 25 cm"),
+            ("Material","Stained-glass style panel with metal chain"),
+            ("Personalization","Your pet's photo; name or short message optional"),
+            ("Lead time","5–10 days production before shipping"),
+            ("Shipping","Worldwide, tracked")],
+      faq=[("Which size should I choose?","15 cm suits a small kitchen window, 20 cm is the most popular for living-room windows, and 25 cm makes the portrait the focal point of a larger window."),
+           ("Will the colours fade in direct sun?","The panel is made to hang in daylight. As with any printed keepsake, a spot that avoids hours of harsh afternoon sun will keep the colours truest."),
+           ("Can I choose what the pet is doing?","Send several photos — sitting, lying down, head tilt — and we will recommend the pose that converts best into a round portrait.")],
+      images=[(f"{IMG}/custom-pet-window-suncatcher/pet-portrait.webp","Custom pet portrait suncatcher with a dog portrait and engraved name"),
+              (f"{IMG}/custom-pet-window-suncatcher/custom-from-photo.webp","Suncatcher hanging in a window beside the original reference photo"),
+              (f"{IMG}/custom-pet-window-suncatcher/in-window.webp","Stained-glass style portrait panel held in the hand")],
+      skus=[sku("15cm","15 × 15 cm",31.0,f"{IMG}/custom-pet-window-suncatcher/pet-portrait.webp"),
+            sku("20cm","20 × 20 cm",33.0,f"{IMG}/custom-pet-window-suncatcher/pet-portrait.webp"),
+            sku("25cm","25 × 25 cm",37.0,f"{IMG}/custom-pet-window-suncatcher/pet-portrait.webp")],
+      sku_label="Choose a size",
+      schema_desc="Stained-glass style custom pet portrait suncatcher made from your photo."),
+
+ dict(slug="pet-memorial-garden-stone", kicker="Memorial Collection",
+      name="Pet Memorial Garden Stone",
+      price_from=23.5,
+      desc="A weather-resistant memorial stone with a photo window and a flower planter top.",
+      short="Four ready-designed stones with a built-in photo window — place it in the garden, on a patio or at the graveside.",
+      long=("A place to visit. Each memorial stone is cast with a built-in photo window and a small planter top, so you can set "
+            "your pet's picture and a few fresh flowers into the same spot. Four inscriptions are available, each finished by "
+            "hand and sealed for outdoor weather. No engraving or design work is needed — insert your photo and place it."),
+      incl=["Cast memorial stone with a built-in photo window",
+            "Planter top for fresh or dried flowers",
+            "Weather-resistant sealed finish",
+            "Ready to display — no assembly"],
+      spec=[("Designs","Four fixed inscriptions — Forever · Companion · In My Heart · Angel Heart"),
+            ("Material","Weather-resistant cast stone"),
+            ("Photo window","Insert your own photo (approx. 6 × 4 cm)"),
+            ("Placement","Garden bed, graveside, patio or indoor shelf"),
+            ("Lead time","3–7 days before shipping"),
+            ("Shipping","Worldwide, tracked")],
+      faq=[("Is the stone personalised?","No — these are ready-designed stones with four fixed inscriptions. You add your own photo to the built-in window, and we ship straight away."),
+           ("Can it stay outside all year?","Yes. The stone is cast and sealed for outdoor use. In hard frost, bring it under cover to protect the photo print."),
+           ("What size photo fits?","A standard small print trimmed to roughly 6 × 4 cm sits behind the window.")],
+      images=[(f"{IMG}/pet-memorial-garden-stone/forever.webp","Pet memorial garden stone inscribed Forever in our hearts"),
+              (f"{IMG}/pet-memorial-garden-stone/companion.webp","Pet memorial stone inscribed Thank you for your company"),
+              (f"{IMG}/pet-memorial-garden-stone/in-my-heart.webp","Pet memorial stone inscribed You are in my heart forever"),
+              (f"{IMG}/pet-memorial-garden-stone/angel-heart.webp","Heart-shaped pet memorial stone inscribed You are my angel"),
+              (f"{IMG}/pet-memorial-garden-stone/angel-heart-front.webp","Heart-shaped memorial stone photographed on white")],
+      skus=[sku("forever","Forever",23.5,f"{IMG}/pet-memorial-garden-stone/forever.webp","“Forever in our hearts”"),
+            sku("companion","Companion",23.5,f"{IMG}/pet-memorial-garden-stone/companion.webp","“Thank you for your company”"),
+            sku("in-my-heart","In My Heart",23.5,f"{IMG}/pet-memorial-garden-stone/in-my-heart.webp","“You are in my heart forever”"),
+            sku("angel-heart","Angel Heart",23.5,f"{IMG}/pet-memorial-garden-stone/angel-heart.webp","“You are my angel”")],
+      sku_label="Choose an inscription",
+      schema_desc="Weather-resistant pet memorial garden stone with photo window and planter top."),
+
+ dict(slug="pet-cremation-urn", kicker="Memorial Collection",
+      name="Classic Square Pet Cremation Urn",
+      price_from=28.5,
+      desc="A heavyweight urn box with a photo window and paw details, in four colours.",
+      short="18.5 × 14 × 11.5 cm · 1100 ml capacity · photo window on the front.",
+      long=("A quiet, solid resting place. The Classic Square Urn is cast in a heavyweight stone-grey material with brushed gold "
+            "paw prints and the words “we love you forever” along the base. A window on the front holds your pet's photo, so the "
+            "urn reads as a framed picture rather than a box. Available in pink, white, black and grey."),
+      incl=["Cast urn with photo window",
+            "Brushed gold paw and corner detailing",
+            "Fits a standard trimmed photo behind the window",
+            "Protective packaging for transit"],
+      spec=[("Dimensions","18.5 × 14 × 11.5 cm"),
+            ("Capacity","1100 ml"),
+            ("Weight","1964 g"),
+            ("Material","Portland cement composite"),
+            ("Colours","Pink · White · Black · Grey"),
+            ("Lead time","3–7 days before shipping"),
+            ("Shipping","Worldwide, tracked")],
+      faq=[("What size pet does it suit?","With 1100 ml of interior space it suits most cats and small to medium dogs. For larger pets, message us and we will advise."),
+           ("Is the urn personalised?","No — the urn ships as designed, with a photo window you fill yourself."),
+           ("How do I insert the photo?","Trim a print to the window size, slide it behind the front frame and press the frame back into place.")],
+      images=[(f"{IMG}/pet-cremation-urn/pink.webp","Pink classic square pet cremation urn with dimensions"),
+              (f"{IMG}/pet-cremation-urn/white.webp","White classic square pet cremation urn"),
+              (f"{IMG}/pet-cremation-urn/black.webp","Black classic square pet cremation urn"),
+              (f"{IMG}/pet-cremation-urn/grey.webp","Grey classic square pet cremation urn"),
+              (f"{IMG}/pet-cremation-urn/grey-lifestyle.webp","Grey urn with a photo of a cat in the front window")],
+      skus=[sku("pink","Pink",28.5,f"{IMG}/pet-cremation-urn/pink.webp"),
+            sku("white","White",28.5,f"{IMG}/pet-cremation-urn/white.webp"),
+            sku("black","Black",28.5,f"{IMG}/pet-cremation-urn/black.webp"),
+            sku("grey","Grey",28.5,f"{IMG}/pet-cremation-urn/grey.webp")],
+      sku_label="Choose a colour",
+      schema_desc="Classic square pet cremation urn, 1100 ml, with photo window in four colours."),
+
+ dict(slug="pet-memorial-offering-set", kicker="Memorial Collection",
+      name="Pet Memorial Offering Set · 55 Pieces",
+      price_from=24.8,
+      desc="A complete 55-piece farewell offering set — favourite treats, grooming items and traditional paper offerings.",
+      short="55 pieces in one box: treats, milk and biscuits, grooming items, paper offerings and a memorial letter.",
+      long=("A complete farewell, gathered in one box. The 55-piece set brings together the things many families place at a "
+            "pet's resting place: premium treats, milk and biscuits, grooming items, and a set of traditional paper offerings — "
+            "joss paper, folded ingots and a memorial letter — with an incense burner and keepsake card. Everything arrives "
+            "arranged and ready to lay out."),
+      incl=["55 pieces, arranged in one gift box",
+            "Treats, milk, biscuits and freeze-dried snacks",
+            "Grooming items: comb, toothbrush, shampoo, nail clippers",
+            "Traditional paper offerings, folded ingots and memorial letter",
+            "Incense burner and keepsake card"],
+      spec=[("Pieces","55"),
+            ("Style","3D (dimensional) offering set"),
+            ("Includes","Treats · grooming · paper offerings · incense burner"),
+            ("Lead time","3–7 days before shipping"),
+            ("Shipping","Worldwide, tracked")],
+      faq=[("What exactly is in the box?","Treats (tuna, salmon, wagyu beef and M9 steak), pet milk, biscuits, freeze-dried snacks, grooming items, a full set of traditional paper offerings with folded ingots, a memorial letter, an incense burner and a keepsake card — 55 pieces in total."),
+           ("Is this a religious set?","The paper offerings follow a traditional East Asian farewell custom. Many families use the whole set; others use only the treats and keepsakes."),
+           ("Can it be shipped as a gift?","Yes. Tell us in the order notes and we will leave the price out of the parcel.")],
+      images=[(f"{IMG}/pet-memorial-offering-set/set-layout.webp","55-piece pet memorial offering set laid out with treats, paper offerings and incense burner"),
+              (f"{IMG}/pet-memorial-offering-set/rainbow-bridge.webp","A dog and a cat asleep together in the sun")],
+      skus=[sku("default","55-Piece Set · 3D Style",24.8,f"{IMG}/pet-memorial-offering-set/set-layout.webp")],
+      sku_label="",
+      schema_desc="55-piece pet memorial offering set with treats, grooming items and traditional paper offerings."),
 ]
 
 ALL_PRODUCTS = FELT + NEW
@@ -568,13 +675,19 @@ def felt_card(p, link="/contact/"):
 
 def new_card(p, tag=None):
     tag_html = f'<span class="tag">{tag}</span>' if tag else ""
+    prices = sorted({k["price"] for k in p["skus"]})
+    if len(prices) == 1:
+        price_line = money(prices[0])
+    else:
+        price_line = "From " + money(prices[0])
+    cover = p["images"][0][0]
     return f"""<a class="pcard" href="/{p['slug']}/">
-  <div class="pcard-art">{tag_html}{SVGS[p['art']]}</div>
+  <div class="pcard-art">{tag_html}<img src="{cover}" alt="{html.escape(p['name'])}" loading="lazy"/></div>
   <div class="pcard-body">
     <p class="pcard-kicker">{html.escape(p['kicker'])}</p>
     <h3 class="pcard-title">{html.escape(p['name'])}</h3>
-    <p class="pcard-desc">{html.escape(p['short'])}</p>
-    <p class="pcard-price">{price_html(p['price'])}</p>
+    <p class="pcard-desc">{html.escape(p['desc'])}</p>
+    <p class="pcard-price">{price_line}</p>
   </div>
 </a>"""
 
@@ -643,7 +756,7 @@ def build_home():
         <p>Needle-felted minis, framed headshots, half-body and full-body replicas — and hand-carved leather portraits. From $87.</p>
       </a>
       <a class="card" href="/products/#memorial" style="text-decoration:none">
-        <div class="round-img" style="background:var(--color-surface-grey);display:flex;align-items:center;justify-content:center">{SVGS['urn']}</div>
+        <div class="round-img"><img src="/images/products/pet-cremation-urn/pink-lifestyle.webp" alt="Classic square pet cremation urn with a photo in the front window" loading="lazy"/></div>
         <h3 class="mt-4" style="font:300 30px/1.2 var(--font-serif)">The Memorial Collection <span class="pcard-price">· New</span></h3>
         <p>Wind chimes, window suncatchers, memorial plaques, wooden urns and farewell sets — gentle ways to keep them close.</p>
       </a>
@@ -665,7 +778,7 @@ def build_home():
   <div class="wrap">
     <p class="eyebrow">The Memorial Collection · New</p>
     <h2 class="h2">Gentle ways to say, and keep saying, goodbye.</h2>
-    <p class="lead" style="max-width:680px">Five new handmade-to-order memorials — from a wind chime for the porch to a place to keep them close. Personalized from your photos.</p>
+    <p class="lead" style="max-width:680px">Five memorial pieces at fixed prices: wind chime $39 · portrait suncatcher from $31 · garden stone $23.50 · cremation urn $28.50 · 55-piece offering set $24.80.</p>
     <div class="grid g3 mt-7">{memorial_cards}</div>
   </div>
 </section>
@@ -750,6 +863,7 @@ def build_products():
   <div class="wrap">
     <p class="eyebrow">The Memorial Collection · New</p>
     <h2 class="h2">Memorial &amp; remembrance pieces.</h2>
+    <p class="lead" style="max-width:640px">Fixed prices, ready to ship — personalised from your photos where the piece is custom.</p>
     <div class="grid g3 mt-6">{memorial}</div>
   </div>
 </section>
@@ -780,8 +894,9 @@ def _products_schema():
         d = {"@type": "Product", "position": i, "name": p["name"], "description": p["desc"],
              "brand": {"@type": "Brand", "name": "Again Paws"},
              "url": f"{SITE}/{p['slug']}/" if p.get("slug") else f"{SITE}/products/"}
-        if p.get("img"):
-            d["image"] = SITE + p["img"]
+        img = p.get("img") or (p.get("images") or [("", "")])[0][0]
+        if img:
+            d["image"] = SITE + img
         items.append(d)
     return ('<script type="application/ld+json">'
             + json.dumps({"@context": "https://schema.org", "@type": "ItemList",
@@ -789,31 +904,82 @@ def _products_schema():
             + '</script>')
 
 def build_product_page(p):
+    personalised = p["name"].startswith("Custom")
     faq_json = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p["faq"]]}, ensure_ascii=False)
     incl = "".join(f"<li>{x}</li>" for x in p["incl"])
     spec = "".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k, v in p["spec"])
     faq_html = "".join(f'<div class="faq-item"><h3>{q}</h3><p>{a}</p></div>' for q, a in p["faq"])
     related = "".join(new_card(r) for r in NEW if r["slug"] != p["slug"])
+
+    # ---- gallery + sku selector -------------------------------------------------
+    cover_src, cover_alt = p["images"][0]
+    thumbs = "".join(
+        f'<button class="thumb{" is-active" if i == 0 else ""}" type="button" data-img="{src}" data-alt="{html.escape(alt)}">'
+        f'<img src="{src}" alt="{html.escape(alt)}" loading="lazy"/></button>'
+        for i, (src, alt) in enumerate(p["images"]))
+
+    prices = sorted({k["price"] for k in p["skus"]})
+    price_text = money(prices[0]) if len(prices) == 1 else "From " + money(prices[0])
+    if len(p["skus"]) > 1:
+        chips = "".join(
+            f'<button class="sku-chip{" is-active" if i == 0 else ""}" type="button" aria-pressed="{"true" if i == 0 else "false"}" '
+            f'data-img="{k["img"]}" data-price="{money(k["price"])}" data-name="{html.escape(k["name"])}">'
+            f'<img src="{k["img"]}" alt="" loading="lazy"/>'
+            f'<span><b>{html.escape(k["name"])}</b>'
+            f'{f"<em>{html.escape(k["note"])}</em>" if k["note"] else ""}'
+            f'<i>{money(k["price"])}</i></span></button>'
+            for i, k in enumerate(p["skus"]))
+        sku_block = f'''<div class="sku-group">
+        <p class="sku-label">{html.escape(p["sku_label"])}</p>
+        <div class="sku-row">{chips}</div>
+      </div>'''
+    else:
+        sku_block = ""
+
+    offers = [{"@type": "Offer", "name": k["name"], "price": f"{k['price']:.2f}",
+               "priceCurrency": "USD", "availability": "https://schema.org/InStock",
+               "url": f"{SITE}/{p['slug']}/"} for k in p["skus"]]
     prod_json = json.dumps({"@context": "https://schema.org", "@type": "Product",
-        "name": p["name"], "description": p["desc"], "brand": {"@type": "Brand", "name": "Again Paws"},
-        "material": p["spec"][0][1], "url": f"{SITE}/{p['slug']}/"}, ensure_ascii=False)
-    price_line = (f'<p class="pcard-price" style="font-size:20px">Reference price · {p["price"]}</p>'
-                  if p["price"] else '<p class="pcard-price" style="font-size:20px">Price on request — personalized quote for every order.</p>')
+        "name": p["name"], "description": p["schema_desc"], "image": [SITE + src for src, _ in p["images"]],
+        "brand": {"@type": "Brand", "name": "Again Paws"}, "url": f"{SITE}/{p['slug']}/",
+        "offers": offers}, ensure_ascii=False)
+
+    about_block = (
+        ('<p class="eyebrow">About This Piece</p>'
+         '<h2 class="h2">Made from your photos, one at a time.</h2>'
+         f'<p>{html.escape(p["long"])}</p>'
+         '<p class="muted">Every order starts with a conversation: send your photos, tell us about your pet, and we confirm every '
+         'detail — size, personalisation and finish — before production begins.</p>'
+         '<div class="btn-row"><a class="btn btn-stone" href="/customization/">How Customization Works</a>'
+         '<a class="btn btn-outline-stone" href="/process/">See The Process</a></div>')
+        if personalised else
+        ('<p class="eyebrow">About This Piece</p>'
+         '<h2 class="h2">Ready to send, made to last.</h2>'
+         f'<p>{html.escape(p["long"])}</p>'
+         '<p class="muted">These pieces are ready-designed, so there is no artwork or proofing step — we pack and ship within a '
+         'few working days. If you would like a photo print trimmed to fit, say so when you order.</p>'
+         '<div class="btn-row"><a class="btn btn-stone" href="/process/">Shipping & Delivery</a>'
+         '<a class="btn btn-outline-stone" href="/faq/">Read The FAQ</a></div>'))
+
     body = f"""
 <main>
 <section class="section-tight">
   <div class="wrap">
-    <p class="breadcrumb"><a href="/">Home</a> · <a href="/products/">Products</a> · {html.escape(p['name'])}</p>
+    <p class="breadcrumb"><a href="/">Home</a> · <a href="/products/#memorial">Memorial Collection</a> · {html.escape(p['name'])}</p>
     <div class="detail-grid">
-      <div class="detail-art">{SVGS[p['art']]}</div>
+      <div>
+        <div class="detail-art"><img id="heroImg" src="{cover_src}" alt="{html.escape(cover_alt)}"/></div>
+        <div class="thumb-row">{thumbs}</div>
+      </div>
       <div>
         <p class="eyebrow">{html.escape(p['kicker'])}</p>
         <h1 class="h1">{html.escape(p['name'])}</h1>
         <p class="lead">{html.escape(p['short'])}</p>
-        {price_line}
+        <p class="pdp-price" id="pdpPrice">{price_text}<span class="pdp-price-note"> · {("made to order" if personalised else "ready to ship")}</span></p>
+        {sku_block}
         <div class="btn-row">
-          <a class="btn btn-primary" href="/contact/">Request a Quote</a>
+          <a class="btn btn-primary" href="/contact/">Order — Ask Us First</a>
           <a class="btn btn-outline-stone" href="https://wa.me/8613064191721">Chat With Us</a>
         </div>
         <ul class="checks">{incl}</ul>
@@ -823,14 +989,8 @@ def build_product_page(p):
 </section>
 
 <section class="band band-white">
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow">About This Piece</p>
-      <h2 class="h2">Made from your photos, one at a time.</h2>
-      <p>{html.escape(p['long'])}</p>
-      <p class="muted">Every order starts with a conversation: send your photos, tell us about your pet, and we confirm every detail — size, personalization and finish — before production begins.</p>
-      <div class="btn-row"><a class="btn btn-stone" href="/customization/">How Customization Works</a></div>
-    </div>
+  <div class="wrap split split-top">
+    <div>{about_block}</div>
     <div class="card">
       <h3 style="font:300 28px/1.2 var(--font-serif)">Specifications</h3>
       <table class="spec-list mt-4">{spec}</table>
@@ -854,10 +1014,33 @@ def build_product_page(p):
   </div>
 </section>
 {CTA_BAND}
-</main>"""
+</main>
+<script>
+(function(){{
+  var hero=document.getElementById('heroImg'), priceEl=document.getElementById('pdpPrice');
+  document.querySelectorAll('.thumb').forEach(function(b){{
+    b.addEventListener('click',function(){{
+      hero.src=b.dataset.img; hero.alt=b.dataset.alt;
+      document.querySelectorAll('.thumb').forEach(function(x){{x.classList.remove('is-active');}});
+      b.classList.add('is-active');
+    }});
+  }});
+  document.querySelectorAll('.sku-chip').forEach(function(c){{
+    c.addEventListener('click',function(){{
+      document.querySelectorAll('.sku-chip').forEach(function(x){{x.classList.remove('is-active');x.setAttribute('aria-pressed','false');}});
+      c.classList.add('is-active'); c.setAttribute('aria-pressed','true');
+      hero.src=c.dataset.img;
+      priceEl.innerHTML=c.dataset.price+'<span class="pdp-price-note"> · '+c.dataset.name+'</span>';
+      var firstThumb=document.querySelector('.thumb');
+      if(firstThumb){{document.querySelectorAll('.thumb').forEach(function(t){{t.classList.remove('is-active');}});}}
+    }});
+  }});
+}})();
+</script>"""
     page(f"{p['slug']}/index.html", shell(
-        title=f"{p['name']} Made From Photos | Again Paws",
-        desc=p["short"], canonical=f"{SITE}/{p['slug']}/", active="/products/",
+        title=f"{p['name']} | Again Paws",
+        desc=p["desc"], canonical=f"{SITE}/{p['slug']}/", active="/products/",
+        og_image=p["images"][0][0], og_type="product",
         body=body, extra_head=f'<script type="application/ld+json">{prod_json}</script>'
                               f'<script type="application/ld+json">{faq_json}</script>'))
 
@@ -865,33 +1048,44 @@ def build_pricing():
     rows = "".join(
         f'<tr><td><strong>{p["kicker"]}</strong><br/><span class="muted small">{html.escape(p["name"])}</span></td>'
         f'<td class="t-price">{p["price"]}</td><td>{html.escape(p["incl"])}</td></tr>' for p in FELT)
-    mrows = "".join(
-        f'<tr><td><strong>{html.escape(p["name"])}</strong></td>'
-        f'<td class="t-price">{price_html(p["price"])}</td><td>{html.escape(p["short"])}</td></tr>' for p in NEW)
+
+    mrows = ""
+    for prod in NEW:
+        first = True
+        for k in prod["skus"]:
+            name_cell = (f'<strong>{html.escape(prod["name"])}</strong><br/>'
+                         f'<span class="muted small"><a href="/{prod["slug"]}/">View product</a></span>') if first else ""
+            opt = html.escape(k["name"])
+            if k["note"]:
+                opt += f'<br/><span class="muted small">{html.escape(k["note"])}</span>'
+            mrows += f'<tr><td>{name_cell}</td><td>{opt}</td><td class="t-price">{money(k["price"])}</td></tr>'
+            first = False
+
     body = f"""
 <main>
 <section class="section-tight">
   <div class="wrap">
     <p class="eyebrow">Pricing</p>
-    <h1 class="h1">Custom pet keepsake pricing.</h1>
-    <p class="lead" style="max-width:680px">Each piece is handmade and customized. Contact us for your personalized quote.</p>
-  </div>
-</section>
-<section class="section-tight">
-  <div class="wrap">
-    <h2 class="h2">Felted Portraits</h2>
-    <div class="mt-5" style="overflow-x:auto"><table class="table">
-      <thead><tr><th>Keepsake</th><th>Starting from</th><th>What's included</th></tr></thead>
-      <tbody>{rows}</tbody></table></div>
+    <h1 class="h1">Pricing, in plain numbers.</h1>
+    <p class="lead" style="max-width:680px">Felted portraits are quoted per pet — reference prices below. The Memorial Collection is fixed-price by size, colour or inscription.</p>
   </div>
 </section>
 <section class="section-tight">
   <div class="wrap">
     <h2 class="h2">The Memorial Collection</h2>
+    <p class="muted" style="max-width:620px">Fixed prices. Choose the size, colour or inscription on the product page.</p>
     <div class="mt-5" style="overflow-x:auto"><table class="table">
-      <thead><tr><th>Memorial piece</th><th>Price</th><th>What's included</th></tr></thead>
+      <thead><tr><th>Memorial piece</th><th>Option</th><th>Price</th></tr></thead>
       <tbody>{mrows}</tbody></table></div>
-    <p class="price-note mt-4">Memorial pieces are quoted individually — send us your pet's photo and personalization request and we reply within 24 hours.</p>
+  </div>
+</section>
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2">Felted Portraits</h2>
+    <p class="muted" style="max-width:620px">Handmade to order from your photos — the final quotation depends on pet size and design complexity.</p>
+    <div class="mt-5" style="overflow-x:auto"><table class="table">
+      <thead><tr><th>Keepsake</th><th>Starting from</th><th>What's included</th></tr></thead>
+      <tbody>{rows}</tbody></table></div>
   </div>
 </section>
 <section class="section band-grey">
@@ -899,7 +1093,7 @@ def build_pricing():
     <div>
       <p class="eyebrow">Every Order Includes</p>
       <ul class="checks">
-        <li>Design review of your pet photos</li>
+        <li>Design review of your pet photos (custom pieces)</li>
         <li>Progress check-in before finishing</li>
         <li>Secure, gift-ready packaging</li>
         <li>Worldwide tracked delivery</li>
@@ -918,8 +1112,8 @@ def build_pricing():
 </section>
 </main>"""
     page("pricing/index.html", shell(
-        title="Custom Pet Keepsake & Memorial Pricing | Again Paws",
-        desc="Reference pricing for handmade felted pet portraits ($87–$477) and the Memorial Collection: wind chimes, suncatchers, plaques, urns and farewell sets. Personalized quotes within 24 hours.",
+        title="Pricing: Pet Memorial Wind Chime, Suncatcher, Urn & Felted Portraits | Again Paws",
+        desc="Fixed prices for the Memorial Collection — wind chime $39, pet portrait suncatcher $31–$37, memorial garden stone $23.50, cremation urn $28.50, 55-piece offering set $24.80 — plus felted portrait reference prices.",
         canonical=f"{SITE}/pricing/", active="/pricing/", body=body))
 
 def build_about():
@@ -1059,9 +1253,9 @@ WA_PREFILL = "Hello%20Again%20Paws!%20I%20would%20love%20to%20know%20more%20abou
 def build_contact():
     prod_options = ['Mini Portrait ($87)', 'Headshot Frame ($197)', 'Half-Body Frame ($297)',
                     'Full-Body Portrait (from $477)', 'Leather Sculpted Pet Portrait ($112)',
-                    'Custom Pet Memorial Wind Chime', 'Custom Pet Portrait Window Suncatcher',
-                    'Custom Pet Memorial Plaque & Grave Marker', 'Custom Wooden Pet Urn',
-                    'Pet Farewell & Remembrance Set', 'Business & Wholesale Cooperation',
+                    'Custom Pet Memorial Wind Chime ($39)', 'Custom Pet Portrait Window Suncatcher ($31–$37)',
+                    'Pet Memorial Garden Stone ($23.50)', 'Classic Square Pet Cremation Urn ($28.50)',
+                    'Pet Memorial Offering Set — 55 pieces ($24.80)', 'Business & Wholesale Cooperation',
                     'Not sure yet — need advice']
     opts_html = "".join(f'<option>{o}</option>' for o in prod_options)
     body = f"""
@@ -1197,8 +1391,8 @@ def reskin(rel):
 # ----------------------------------------------------------------------------
 SITEMAP_URLS = [
     "/", "/products/", "/pricing/", "/about/", "/process/", "/customization/", "/contact/", "/faq/",
-    "/custom-pet-wind-chime/", "/custom-pet-window-suncatcher/", "/custom-pet-memorial-plaque/",
-    "/custom-pet-urn/", "/pet-farewell-remembrance-set/",
+    "/custom-pet-wind-chime/", "/custom-pet-window-suncatcher/", "/pet-memorial-garden-stone/",
+    "/pet-cremation-urn/", "/pet-memorial-offering-set/",
     "/custom-pet-keepsake-from-photo/", "/needle-felted-pet-memorial-gift/", "/personalized-pet-gift-from-photo/",
     "/guides/", "/guides/are-custom-pet-portraits-worth-it/", "/guides/best-photos-for-felted-pet/",
     "/guides/custom-needle-felted-pet-replica-from-photo/", "/guides/how-long-does-a-custom-pet-portrait-take/",
@@ -1213,24 +1407,46 @@ def build_sitemap():
 
 LLMS = """# Again Paws
 
-> Handmade pet keepsakes and memorials made from your photos: needle-felted portraits and the Memorial Collection (wind chimes, window suncatchers, memorial plaques, wooden urns, farewell sets). Made to order, shipped worldwide from the Again Paws studio.
+> Handmade pet keepsakes and memorials: needle-felted portraits, plus the Memorial Collection — custom photo wind chimes, custom window suncatchers, memorial garden stones, cremation urns and a 55-piece memorial offering set. Made to order, shipped worldwide.
 
-Reference prices: felted portraits $87-$477. Memorial collection: personalized quotes within 24 hours.
+Fixed prices: wind chime $39 · suncatcher $31–$37 by size · memorial garden stone $23.50 · cremation urn $28.50 · 55-piece offering set $24.80. Felted portraits: reference prices $87–$477.
 
-- [Home](https://againpaws.vip/): custom pet keepsakes made from photos
-- [Products](https://againpaws.vip/products/): full collection of felted portraits and memorial pieces
-- [Custom Pet Memorial Wind Chime](https://againpaws.vip/custom-pet-wind-chime/): personalized chime with photo charm and engraved name
-- [Custom Pet Portrait Window Suncatcher](https://againpaws.vip/custom-pet-window-suncatcher/): light-catching portrait pendant for windows
-- [Custom Pet Memorial Plaque & Grave Marker](https://againpaws.vip/custom-pet-memorial-plaque/): engraved weatherproof garden or graveside plaque
-- [Custom Wooden Pet Urn](https://againpaws.vip/custom-pet-urn/): handmade wooden urn with engraved name and portrait plaque
-- [Pet Farewell & Remembrance Set](https://againpaws.vip/pet-farewell-remembrance-set/): memorial candle, remembrance card, scatter pouch and keepsake token
-- [Pricing](https://againpaws.vip/pricing/): reference prices for every keepsake
+- [Home](https://againpaws.vip/): custom pet keepsakes and memorials
+- [Products](https://againpaws.vip/products/): full collection
+- [Custom Pet Memorial Wind Chime ($39)](https://againpaws.vip/custom-pet-wind-chime/): engraved photo tag, natural or coffee wood, silver or black tubes
+- [Custom Pet Portrait Window Suncatcher ($31–$37)](https://againpaws.vip/custom-pet-window-suncatcher/): stained-glass style portrait from your photo, 15/20/25 cm
+- [Pet Memorial Garden Stone ($23.50)](https://againpaws.vip/pet-memorial-garden-stone/): four inscriptions, built-in photo window and planter top
+- [Classic Square Pet Cremation Urn ($28.50)](https://againpaws.vip/pet-cremation-urn/): 18.5 × 14 × 11.5 cm, 1100 ml, four colours
+- [Pet Memorial Offering Set — 55 pieces ($24.80)](https://againpaws.vip/pet-memorial-offering-set/): treats, grooming items and traditional paper offerings
+- [Pricing](https://againpaws.vip/pricing/): all prices in one table
 - [Customization](https://againpaws.vip/customization/): what can be customized from your pet photos
 - [Process](https://againpaws.vip/process/): how an order goes from photo to finished piece
 - [Guides](https://againpaws.vip/guides/): buying guides for custom pet memorials
 - [FAQ](https://againpaws.vip/faq/): ordering, production and shipping answers
 - [Contact](https://againpaws.vip/contact/): request a quote (email or WhatsApp)
 """
+
+REDIRECTS = {
+    "custom-pet-memorial-plaque": "pet-memorial-garden-stone",
+    "custom-pet-urn": "pet-cremation-urn",
+    "pet-farewell-remembrance-set": "pet-memorial-offering-set",
+}
+
+def build_redirects():
+    for old, new in REDIRECTS.items():
+        html_s = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Redirecting | Again Paws</title>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="{SITE}/{new}/"/>
+<meta http-equiv="refresh" content="0; url=/{new}/"/>
+</head>
+<body><p>This product has moved to <a href="/{new}/">/{new}/</a>.</p></body>
+</html>
+"""
+        page(f"{old}/index.html", html_s)
 
 def build_llms():
     page("llms.txt", LLMS)
@@ -1248,5 +1464,5 @@ if __name__ == "__main__":
     build_pricing(); build_about(); build_process(); build_customization(); build_contact(); build_404()
     for rel in RESKIN:
         reskin(rel)
-    build_sitemap(); build_llms()
+    build_redirects(); build_sitemap(); build_llms()
     print("DONE")
