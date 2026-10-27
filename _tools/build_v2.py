@@ -47,7 +47,7 @@ h1,h2,h3{font-family:var(--font-serif);font-weight:300;line-height:1.12;margin:0
 .eyebrow{font:700 12px/1.2 var(--font-sans);letter-spacing:1px;text-transform:uppercase;
 color:var(--color-ink);margin:0 0 var(--space-4)}
 .eyebrow.on-dark{color:var(--color-mute)}
-.display{font-family:var(--font-serif);font-weight:300;font-size:clamp(42px,6.4vw,88px);line-height:1.05}
+.display{font-family:var(--font-serif);font-weight:300;font-size:clamp(35px,5.4vw,76px);line-height:1.06}
 .h1{font-family:var(--font-serif);font-weight:300;font-size:clamp(34px,4.6vw,60px);line-height:1.1}
 .h2{font-family:var(--font-serif);font-weight:300;font-size:clamp(28px,3.6vw,44px);line-height:1.15}
 .h3{font-family:var(--font-sans);font-weight:400;font-size:clamp(22px,2.4vw,30px);line-height:1.25}
@@ -100,9 +100,17 @@ border-bottom:1px solid transparent;transition:border-color .2s ease}
 /* ---------- hero ---------- */
 .hero{padding:var(--space-8) 0 var(--space-9)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-8);align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-.hero-art{background:var(--color-surface-grey);border-radius:var(--radius-xl);overflow:hidden}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero{padding:var(--space-6) 0 var(--space-7)}}
+.hero-art{background:var(--color-surface-grey);border-radius:var(--radius-xl);overflow:hidden;position:relative}
 .hero-art img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.4}
+.hero-badge{position:absolute;left:20px;bottom:20px;max-width:78%;
+display:flex;flex-direction:column;gap:3px;background:var(--color-surface);border-radius:var(--radius-lg);
+padding:14px 20px;box-shadow:var(--shadow-2);text-decoration:none}
+.hero-badge-eyebrow{font:700 11px/1.2 var(--font-sans);letter-spacing:1px;text-transform:uppercase;color:var(--color-clay)}
+.hero-badge b{font:300 20px/1.2 var(--font-serif);color:var(--color-ink)}
+.hero-badge span:last-child{font-size:13px;color:var(--color-ash)}
+@media(max-width:640px){.hero-badge{left:12px;bottom:12px;padding:11px 16px}.hero-badge b{font-size:17px}}
+.btn-ic{width:20px;height:20px;flex:none}
 .stat-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
 .stat-pill{background:var(--color-canvas);border:1px solid var(--color-hairline);border-radius:var(--radius-full);
 padding:10px 18px;font:400 14px/1.4 var(--font-sans);color:var(--color-stone)}
@@ -782,25 +790,44 @@ def steps_html():
 def build_home():
     featured = "".join(felt_card(p) for p in FELT[:4])
     memorial_cards = "".join(new_card(p, tag="New") for p in NEW)
+    NL = chr(10)
+    hero_msg = NL.join([
+        "Hi Again Paws! I would like to order a custom pet keepsake.",
+        "",
+        "Piece I am interested in:",
+        "My pet's name:",
+        "Photos: (attach in this chat)",
+        "",
+    ])
+    hero_wa = f"https://wa.me/{WHATSAPP}?text=" + quote(hero_msg, safe="")
     body = f"""
 <main>
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Handmade Pet Memorials &amp; Keepsakes</p>
-      <h1 class="display">Turn your beloved pet into a timeless handmade keepsake.</h1>
-      <p class="lead mt-5">Handcrafted felted portraits and personalized memorial pieces, created from your pet's photo — made by hand, kept forever.</p>
+      <h1 class="display">Turn your pet's photo into a handmade keepsake.</h1>
+      <p class="lead mt-5">Felted portraits and personalized memorial pieces — made by hand from your photos, kept forever.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/contact/">Request a Custom Quote</a>
+        <a class="btn btn-primary" href="{hero_wa}" target="_blank" rel="noopener">
+          <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5s.8 1.9.9 2c0 .1.1.3 0 .5s-.2.3-.3.5l-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1s.8-1 1-1.3c.2-.3.4-.3.7-.2s1.9.9 2.2 1.1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.4Z"/></svg>
+          Order on WhatsApp</a>
         <a class="btn btn-outline-stone" href="/products/">Browse the Collection</a>
       </div>
       <div class="stat-row">
         <span class="stat-pill">100% handmade</span>
-        <span class="stat-pill">Made from your photos</span>
+        <span class="stat-pill">Memorial Collection from $23.50</span>
         <span class="stat-pill">Shipped worldwide</span>
       </div>
     </div>
-    <div class="hero-art"><img src="/images/hero.webp" alt="Handmade needle-felted pet portrait held beside the reference photo" fetchpriority="high" width="720" height="790"/></div>
+    <div class="hero-art">
+      <img src="/images/hero.webp" alt="Handmade needle-felted pet portrait held beside the reference photo" fetchpriority="high" width="720" height="790"/>
+      <a class="hero-badge" href="/products/#memorial">
+        <span class="hero-badge-eyebrow">New · Memorial Collection</span>
+        <b>Fixed prices from $23.50</b>
+        <span>Wind chimes · suncatchers · urns &amp; more</span>
+      </a>
+    </div>
   </div>
 </section>
 
