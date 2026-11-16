@@ -51,3 +51,4 @@ User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://againpaws.vip/sitemap.xml
+Sitemap: https://againpaws.vip/sitemap-images.xml
